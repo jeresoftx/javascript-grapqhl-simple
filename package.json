@@ -1,0 +1,10 @@
+{
+  "name": "graphql-javacript-simple",
+  "version": "v1.0.0",
+  "description": "A simple graphql in javascript using apollo server.",
+  "main": "index.js",
+  "repository": "https://github.com/jeresoftx/javascript-grapqhl-simple.git",
+  "author": "Joel Alvarez Mexia <jeresoft@gmail.com>",
+  "license": "MIT",
+  "private": false
+}
