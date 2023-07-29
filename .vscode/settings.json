@@ -1,0 +1,4 @@
+{
+  "jest.shell": "/bin/zsh",
+  "jest.autoRun": "watch"
+}
