@@ -47,10 +47,18 @@ This command will build and start the Docker containers. Make sure Docker is run
 
 - ### Step 5: Start the Application
 
-Finally, you can start the application by running:
+You can start the application by running:
 
 ```sh
 npm start
+```
+
+- ### Step 6: Test the Application
+
+Finally, you can test the application by running:
+
+```sh
+npm test
 ```
 
 This command will start the Node.js application. You should now be able to access the application through your web browser.

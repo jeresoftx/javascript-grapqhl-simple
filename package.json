@@ -35,6 +35,10 @@
   "scripts": {
     "prepare": "husky install",
     "lint-staged": "lint-staged",
-    "test": "jest"
+    "test": "jest",
+    "start:stack": "docker build -t mongodb ./docker/ && docker-compose --env-file .env -f ./docker/docker-compose.yml up -d"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1"
   }
 }

@@ -1,0 +1,39 @@
+[
+  {
+    "_id": {
+      "$oid": "6466bc0aa1ca2e6dca0597cb"
+    },
+    "username": "jeresoft",
+    "name": "Joel",
+    "lastName": "Alvarez Mexia",
+    "fullName": "Joel Alvarez Mexia",
+    "emails": [
+      {
+        "email": "jeresoft@gmail.com",
+        "main": true
+      },
+      {
+        "email": "jeresoft+other@gmail.com",
+        "main": false
+      }
+    ],
+    "phones": [
+      {
+        "phone": "6691230103",
+        "main": true
+      }
+    ],
+    "roles": ["superAdmin"],
+    "password": "$2b$10$f7GQtaQODx0WoTExJBoqU.ah0EndSCGT8Myef28xRG1c4lPCbtRuW",
+    "createdAt": {
+      "$date": "2023-07-29T00:00:13.000Z"
+    },
+    "updatedAt": {
+      "$date": "2023-07-29T00:00:13.000Z"
+    },
+    "lastConnected": {
+      "$date": "2023-07-29T00:00:13.000Z"
+    },
+    "__v": 0
+  }
+]
