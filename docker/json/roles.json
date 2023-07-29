@@ -1,0 +1,62 @@
+[
+  {
+    "_id": {
+      "$oid": "6466bc0aa1ca2e6dcd0597cb"
+    },
+    "name": "Super Admin",
+    "permissions": [
+      {
+        "_id": {
+          "$oid": "6466bc0aa1ca2e6dca0597bb"
+        },
+        "name": "*"
+      }
+    ],
+    "createdAt": {
+      "$date": "2023-07-29T00:00:13.000Z"
+    },
+    "updatedAt": {
+      "$date": "2023-07-29T00:00:13.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6466bc0aa1ca2e6dcd0597ab"
+    },
+    "name": "Admin",
+    "permissions": [
+      {
+        "_id": {
+          "$oid": "6466bc0aa1ca2e6dca0597cb"
+        },
+        "name": "browseUser"
+      },
+      {
+        "_id": {
+          "$oid": "6466bc0aa1ca2e6dca0597cb"
+        },
+        "name": "readUser"
+      },
+      {
+        "_id": {
+          "$oid": "6466bc0aa1ca2e6dca0597ca"
+        },
+        "name": "editUser"
+      },
+      {
+        "_id": {
+          "$oid": "6466bc0aa1ca2e6dca0597ce"
+        },
+        "name": "addUser"
+      }
+    ],
+    "createdAt": {
+      "$date": "2023-07-29T00:00:13.000Z"
+    },
+    "updatedAt": {
+      "$date": "2023-07-29T00:00:13.000Z"
+    },
+    "__v": 0
+  }
+]

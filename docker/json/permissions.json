@@ -1,0 +1,86 @@
+[
+  {
+    "_id": {
+      "$oid": "6466bc0aa1ca2e6dca0597bb"
+    },
+    "name": "*",
+    "description": "Permission for all.",
+    "createdAt": {
+      "$date": "2023-07-29T00:00:13.000Z"
+    },
+    "updatedAt": {
+      "$date": "2023-07-29T00:00:13.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6466bc0aa1ca2e6dca0597cb"
+    },
+    "name": "browseUser",
+    "description": "Call used to browse a exist user.",
+    "createdAt": {
+      "$date": "2023-07-29T00:00:13.000Z"
+    },
+    "updatedAt": {
+      "$date": "2023-07-29T00:00:13.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6466bc0aa1ca2e6dca0597cb"
+    },
+    "name": "readUser",
+    "description": "Call used to read a exist user.",
+    "createdAt": {
+      "$date": "2023-07-29T00:00:13.000Z"
+    },
+    "updatedAt": {
+      "$date": "2023-07-29T00:00:13.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6466bc0aa1ca2e6dca0597ca"
+    },
+    "name": "editUser",
+    "description": "Call used to edit a exist user.",
+    "createdAt": {
+      "$date": "2023-07-29T00:00:13.000Z"
+    },
+    "updatedAt": {
+      "$date": "2023-07-29T00:00:13.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6466bc0aa1ca2e6dca0597ce"
+    },
+    "name": "addUser",
+    "description": "Call used to add a new user into the database.",
+    "createdAt": {
+      "$date": "2023-07-29T00:00:13.000Z"
+    },
+    "updatedAt": {
+      "$date": "2023-07-29T00:00:13.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6466bc0aa1ca2e6dca0597cb"
+    },
+    "name": "deleteUser",
+    "description": "Call used to delete a exist user.",
+    "createdAt": {
+      "$date": "2023-07-29T00:00:13.000Z"
+    },
+    "updatedAt": {
+      "$date": "2023-07-29T00:00:13.000Z"
+    },
+    "__v": 0
+  }
+]

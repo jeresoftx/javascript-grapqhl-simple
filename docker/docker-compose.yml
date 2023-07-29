@@ -1,0 +1,12 @@
+version: '3.9'
+services:
+  mongodb:
+    container_name: mongodb
+    build:
+      context: .
+      dockerfile: ./Docketfile
+    image: mongodb
+    ports:
+      - ${DB_PORT}:${DB_PORT}
+    volumes:
+      - ./json:/json
