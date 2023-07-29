@@ -1,10 +1,26 @@
 {
   "name": "graphql-javacript-simple",
   "version": "v1.0.0",
-  "description": "A simple graphql in javascript using apollo server.",
-  "main": "index.js",
-  "repository": "https://github.com/jeresoftx/javascript-grapqhl-simple.git",
+  "description": "A simple graphql in javascript using apollo server",
+  "main": "src/index.js",
   "author": "Joel Alvarez Mexia <jeresoft@gmail.com>",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "engines": {
+    "node": ">=18.17.0",
+    "npm": ">=9.6.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeresoftx/javascript-grapqhl-simple.git"
+  },
+  "keywords": [
+    "javascript",
+    "graphql",
+    "skeleton"
+  ],
+  "bugs": {
+    "url": "https://github.com/jeresoftx/javascript-grapqhl-simple/issues"
+  },
+  "homepage": "https://github.com/jeresoftx/javascript-grapqhl-simple#readme"
 }
