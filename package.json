@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/jeresoftx/javascript-grapqhl-simple/issues"
   },
-  "homepage": "https://github.com/jeresoftx/javascript-grapqhl-simple#readme"
+  "homepage": "https://github.com/jeresoftx/javascript-grapqhl-simple#readme",
+  "devDependencies": {
+    "prettier": "^3.0.0"
+  }
 }
