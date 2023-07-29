@@ -2,7 +2,7 @@
   "name": "graphql-javacript-simple",
   "version": "v1.0.0",
   "description": "A simple graphql in javascript using apollo server",
-  "main": "src/index.js",
+  "main": "index.js",
   "author": "Joel Alvarez Mexia <jeresoft@gmail.com>",
   "license": "MIT",
   "private": false,
@@ -24,6 +24,17 @@
   },
   "homepage": "https://github.com/jeresoftx/javascript-grapqhl-simple#readme",
   "devDependencies": {
+    "eslint": "^7.32.0 || ^8.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "husky": "^8.0.3",
+    "jest": "^29.6.2",
+    "lint-staged": "^13.2.3",
     "prettier": "^3.0.0"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "lint-staged": "lint-staged",
+    "test": "jest"
   }
 }

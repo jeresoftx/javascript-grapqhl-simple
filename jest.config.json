@@ -1,0 +1,7 @@
+{
+  "testEnvironment": "node",
+  "verbose": true,
+  "moduleFileExtensions": ["js", "ts", "tsx", "json", "node"],
+  "testPathIgnorePatterns": ["/node_modules/"],
+  "collectCoverage": true
+}
