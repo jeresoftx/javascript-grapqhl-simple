@@ -1,0 +1,4 @@
+type Query {
+  "retrun the version of the graphql system"
+  version: String!
+}
