@@ -2,7 +2,7 @@
   "name": "graphql-javacript-simple",
   "version": "v1.0.0",
   "description": "A simple graphql in javascript using apollo server",
-  "main": "index.js",
+  "main": "src/index.js",
   "author": "Joel Alvarez Mexia <jeresoft@gmail.com>",
   "license": "MIT",
   "private": false,
@@ -23,6 +23,18 @@
     "url": "https://github.com/jeresoftx/javascript-grapqhl-simple/issues"
   },
   "homepage": "https://github.com/jeresoftx/javascript-grapqhl-simple#readme",
+  "dependencies": {
+    "apollo-server": "^3.12.0",
+    "apollo-server-express": "^3.12.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "graphql": "^16.7.1",
+    "http": "^0.0.1-security",
+    "moongose": "^1.0.0",
+    "pino": "^8.14.2",
+    "pino-pretty": "^10.2.0"
+  },
   "devDependencies": {
     "eslint": "^7.32.0 || ^8.2.0",
     "eslint-config-airbnb-base": "^15.0.0",
@@ -30,15 +42,14 @@
     "husky": "^8.0.3",
     "jest": "^29.6.2",
     "lint-staged": "^13.2.3",
+    "nodemon": "^3.0.1",
     "prettier": "^3.0.0"
   },
   "scripts": {
+    "start": "nodemon -e js,graphql src/index.js",
     "prepare": "husky install",
     "lint-staged": "lint-staged",
     "test": "jest",
     "start:stack": "docker build -t mongodb ./docker/ && docker-compose --env-file .env -f ./docker/docker-compose.yml up -d"
-  },
-  "dependencies": {
-    "dotenv": "^16.3.1"
   }
 }
