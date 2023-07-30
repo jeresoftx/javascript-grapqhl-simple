@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const http = require('http');
 const express = require('express');
 const { config } = require('dotenv');

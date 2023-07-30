@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const { readFileSync } = require('fs');
 const { ApolloServer } = require('apollo-server-express');
 
