@@ -1,8 +1,10 @@
-const version = require('./version/query');
+const versionQuery = require('./version/query');
+const usersQuery = require('./users/query');
 
 const resolvers = {
   Query: {
-    ...version,
+    ...versionQuery,
+    ...usersQuery,
   },
 };
 
