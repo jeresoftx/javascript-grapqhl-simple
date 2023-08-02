@@ -1,4 +1,41 @@
+scalar DateTime
+scalar EmailAddress
+scalar PhoneNumber
+scalar PositiveInt
+scalar JSON
+
+type User {
+  id: ID!
+  name: String!
+  lastName: String!
+  fullName: String!
+  emails: [Email!]!
+  phones: [Phone!]!
+  lastConnected: DateTime
+  createdAt: DateTime!
+  updateAt: DateTime!
+}
+
+type Email {
+  email: EmailAddress!
+  main: Boolean!
+}
+
+type Phone {
+  email: PhoneNumber!
+  main: Boolean!
+}
+input paramsInput {
+  offset: PositiveInt
+  limit: PositiveInt
+  sort: JSON
+  filter: JSON
+}
+
 type Query {
   "retrun the version of the graphql system"
   version: String!
+
+  "User lists"
+  users(params: paramsInput!): [User!]!
 }

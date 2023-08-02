@@ -1,16 +1,12 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const http = require('http');
 const express = require('express');
 const { config } = require('dotenv');
-const pino = require('pino');
 
 const pjson = require('../package.json');
+const { logger } = require('./utils/logger');
 const { getApolloServer } = require('./graphql/server');
 
-const logger = pino({
-  transport: {
-    target: 'pino-pretty',
-  },
-});
 config();
 const runServer = async () => {
   const apollo = getApolloServer();

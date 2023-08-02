@@ -30,7 +30,9 @@
     "express": "^4.18.2",
     "fs": "^0.0.1-security",
     "graphql": "^16.7.1",
+    "graphql-scalars": "^1.22.2",
     "http": "^0.0.1-security",
+    "mongoose": "^7.4.1",
     "moongose": "^1.0.0",
     "pino": "^8.14.2",
     "pino-pretty": "^10.2.0"

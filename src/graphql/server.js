@@ -1,13 +1,17 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const { readFileSync } = require('fs');
 const { ApolloServer } = require('apollo-server-express');
+const { scalarTypeDefs } = require('graphql-scalars');
 
 const resolvers = require('./resolvers/resolvers');
 
 const getApolloServer = () => {
-  const typeDefs = readFileSync(__dirname.concat('/schema.graphql')).toString();
+  const myTypeDefs = readFileSync(
+    __dirname.concat('/schema.graphql'),
+  ).toString();
 
   const apollo = new ApolloServer({
-    typeDefs,
+    typeDefs: [scalarTypeDefs, myTypeDefs],
     resolvers,
     introspection: true,
   });

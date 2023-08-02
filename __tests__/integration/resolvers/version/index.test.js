@@ -1,4 +1,4 @@
-const { getApolloServer } = require('../../src/graphql/server');
+const { getApolloServer } = require('../../../../src/graphql/server');
 
 it('returns the version of graphql', async () => {
   const testServer = await getApolloServer();
