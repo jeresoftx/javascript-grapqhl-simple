@@ -1,8 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
-const { Schema } = require('mongoose');
+const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
-const { db } = require('../db/mongoClient');
-
+const { Schema } = mongoose;
 const schema = new Schema(
   {
     name: {
@@ -18,7 +18,6 @@ const schema = new Schema(
     fullName: {
       type: String,
       required: true,
-      trim: true,
     },
     username: {
       type: String,
@@ -75,4 +74,24 @@ const schema = new Schema(
   { collection: 'users' },
 );
 
-module.exports = db.model('User', schema);
+// eslint-disable-next-line func-names
+schema.pre('save', async function (next) {
+  if (this.name) {
+    this.fullName = `${this.name} ${this.lastName}`;
+  }
+  if (this.password) {
+    const salt = bcrypt.genSaltSync(10);
+    this.password = await bcrypt.hash(this.password, salt);
+  }
+  next();
+});
+
+schema.post('save', (error, doc, next) => {
+  if (error.code === 11000) {
+    next(new Error('The username already exists!, try with another one'));
+  } else {
+    next();
+  }
+});
+
+module.exports = mongoose.model('User', schema);

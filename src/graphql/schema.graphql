@@ -3,6 +3,7 @@ scalar EmailAddress
 scalar PhoneNumber
 scalar PositiveInt
 scalar JSON
+scalar NonEmptyString
 
 type User {
   id: ID!
@@ -38,4 +39,15 @@ type Query {
 
   "User lists"
   users(params: paramsInput!): [User!]!
+}
+
+type Mutation {
+  addUser(
+    name: NonEmptyString!
+    lastName: NonEmptyString!
+    username: NonEmptyString!
+    email: EmailAddress!
+    phone: PhoneNumber!
+    password: String!
+  ): User!
 }
