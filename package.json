@@ -26,6 +26,7 @@
   "dependencies": {
     "apollo-server": "^3.12.0",
     "apollo-server-express": "^3.12.0",
+    "bcrypt": "^5.1.0",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "fs": "^0.0.1-security",
@@ -44,6 +45,7 @@
     "husky": "^8.0.3",
     "jest": "^29.6.2",
     "lint-staged": "^13.2.3",
+    "mongodb-memory-server": "^8.13.0",
     "nodemon": "^3.0.1",
     "prettier": "^3.0.0"
   },
@@ -51,7 +53,8 @@
     "start": "nodemon -e js,graphql src/index.js",
     "prepare": "husky install",
     "lint-staged": "lint-staged",
-    "test": "jest",
+    "test": "NODE_ENV=test jest src",
+    "integration-test": "jest __tests__",
     "start:stack": "docker build -t mongodb ./docker/ && docker-compose --env-file .env -f ./docker/docker-compose.yml up -d"
   }
 }

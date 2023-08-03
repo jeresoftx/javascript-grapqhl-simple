@@ -9,7 +9,7 @@ const { getApolloServer } = require('./graphql/server');
 
 config();
 const runServer = async () => {
-  const apollo = getApolloServer();
+  const apollo = await getApolloServer();
   await apollo.start();
 
   const app = express();

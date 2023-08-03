@@ -3,9 +3,11 @@ const { readFileSync } = require('fs');
 const { ApolloServer } = require('apollo-server-express');
 const { scalarTypeDefs } = require('graphql-scalars');
 
+const { connectDB } = require('../db/connectDB');
 const resolvers = require('./resolvers/resolvers');
 
-const getApolloServer = () => {
+const getApolloServer = async (testing = true) => {
+  await connectDB(testing);
   const myTypeDefs = readFileSync(
     __dirname.concat('/schema.graphql'),
   ).toString();

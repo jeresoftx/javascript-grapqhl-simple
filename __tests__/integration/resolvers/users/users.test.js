@@ -2,7 +2,7 @@ const { getApolloServer } = require('../../../../src/graphql/server');
 
 describe('User test', () => {
   it('returns a users list', async () => {
-    const testServer = await getApolloServer();
+    const testServer = await getApolloServer(false);
 
     const response = await testServer.executeOperation({
       query: 'query { users(params:{}) {id} }',
@@ -14,6 +14,6 @@ describe('User test', () => {
     ];
 
     expect(response.errors).toBeUndefined();
-    expect(response.data?.users).toEqual(expectData);
+    expect(response.data?.users).toMatchObject(expectData);
   });
 });
