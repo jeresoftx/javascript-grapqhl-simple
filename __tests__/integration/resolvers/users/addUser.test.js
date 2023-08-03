@@ -1,28 +1,21 @@
 const { getApolloServer } = require('../../../../src/graphql/server');
 const { mutationAddUser } = require('./features/mutation/mutation.addUser');
 const { newUser } = require('./features/newUser');
-const { queryUser } = require('./features/query/query.users');
 
-describe('User list', () => {
-  it('returns a users list', async () => {
+describe('Create user', () => {
+  it('add a user', async () => {
     const testServer = await getApolloServer();
 
-    await testServer.executeOperation({
+    const response = await testServer.executeOperation({
       query: mutationAddUser,
       variables: newUser,
     });
-
-    const response = await testServer.executeOperation({
-      query: queryUser,
-      variables: { params: {} },
-    });
-    const expectData = [
-      {
+    const expectData = {
+      addUser: {
         fullName: `${newUser.name} ${newUser.lastName}`,
       },
-    ];
-
+    };
     expect(response.errors).toBeUndefined();
-    expect(response.data?.users).toMatchObject(expectData);
+    expect(response.data).toMatchObject(expectData);
   });
 });
