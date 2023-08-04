@@ -39,6 +39,8 @@ type Query {
 
   "User lists"
   users(params: paramsInput!): [User!]!
+  "User lists"
+  user(id: ID!): User
 }
 
 type Mutation {

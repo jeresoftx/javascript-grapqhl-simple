@@ -1,7 +1,7 @@
 const { getApolloServer } = require('../../../../src/graphql/server');
 const { mutationAddUser } = require('./features/mutation/mutation.addUser');
 const { newUser } = require('./features/newUser');
-const { queryUser } = require('./features/query/query.users');
+const { queryUsers } = require('./features/query/query.users');
 
 describe('User list', () => {
   it('returns a users list', async () => {
@@ -13,7 +13,7 @@ describe('User list', () => {
     });
 
     const response = await testServer.executeOperation({
-      query: queryUser,
+      query: queryUsers,
       variables: { params: {} },
     });
     const expectData = [
