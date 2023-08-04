@@ -2,7 +2,7 @@ const { getApolloServer } = require('../../../../src/graphql/server');
 const { mutationAddUser } = require('./features/mutation/mutation.addUser');
 const { newUser } = require('./features/newUser');
 
-describe('Create user', () => {
+describe('Add user', () => {
   it('add a user', async () => {
     const testServer = await getApolloServer();
 

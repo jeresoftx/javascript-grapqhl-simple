@@ -1,8 +1,8 @@
-const queryUser = `
+const queryUsers = `
   query users($params: paramsInput!) {
     users(params: $params) {
       fullName
     }
   }`;
 
-module.exports = { queryUser };
+module.exports = { queryUsers };
