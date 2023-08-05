@@ -32,6 +32,14 @@ input paramsInput {
   sort: JSON
   filter: JSON
 }
+input emailInput {
+  email: EmailAddress!
+  main: Boolean!
+}
+input phoneInput {
+  phone: PhoneNumber!
+  main: Boolean!
+}
 
 type Query {
   "retrun the version of the graphql system"
@@ -52,4 +60,8 @@ type Mutation {
     phone: PhoneNumber!
     password: String!
   ): User!
+
+  deleteUser(id: ID!): Boolean!
+
+  updateUser(name: NonEmptyString!, lastName: NonEmptyString!): User!
 }
