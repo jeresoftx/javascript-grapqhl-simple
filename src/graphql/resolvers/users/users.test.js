@@ -5,12 +5,12 @@ const User = require('../../../models/user');
 
 describe('Users unit test', () => {
   beforeAll(async () => {
-    connectDB();
+    await connectDB();
     await User.insertMany(usersData);
   });
 
   afterAll(async () => {
-    disconnectDB();
+    await disconnectDB();
   });
 
   it('returns a users list', async () => {
