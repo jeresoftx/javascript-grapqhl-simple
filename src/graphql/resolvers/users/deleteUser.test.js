@@ -11,11 +11,9 @@ describe('Delete user unit test', () => {
     await connectDB();
     let users = await User.find({});
     if (users.length === 0) {
-      console.log('entro');
       await User.insertMany(usersData);
       users = await User.find({});
     }
-    console.log(users);
     idUser = users[0].id;
   });
 
