@@ -4,7 +4,7 @@ const { connectDB, disconnectDB } = require('../../../db/connectDB');
 const usersData = require('../../../../data/users.json');
 const User = require('../../../models/user');
 
-describe('Add user unit test', () => {
+describe('Delete user unit test', () => {
   let idUser = null;
 
   beforeAll(async () => {
@@ -23,7 +23,7 @@ describe('Add user unit test', () => {
     await disconnectDB();
   });
 
-  it('returns a new user', async () => {
+  it('returns true if the user was deleted', async () => {
     const response = await deleteUser(null, { id: idUser });
     expect(response).toBe(true);
   });
