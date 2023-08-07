@@ -21,8 +21,13 @@ describe('Delete user unit test', () => {
     await disconnectDB();
   });
 
-  it('returns true if the user was deleted', async () => {
+  it('Should returns true if the user was deleted', async () => {
     const response = await deleteUser(null, { id: idUser });
     expect(response).toBe(true);
+  });
+
+  it("Should be return false if the user doesn't exists", async () => {
+    const response = await deleteUser(null, { id: '1166bc0aa1ca2e6dca0597cf' });
+    expect(response).toBe(false);
   });
 });

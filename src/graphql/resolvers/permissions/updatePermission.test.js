@@ -29,4 +29,14 @@ describe('Update a permission unit test', () => {
 
     expect(response.name).toBe(expectedData);
   });
+
+  it("Should be return false if the permission doesn't exists", async () => {
+    const permission = {
+      id: '1166bc0aa1ca2e6dca0597cf',
+      name: 'permission update',
+      decription: 'permission update',
+    };
+    const response = await updatePermission(null, permission);
+    expect(response).toBeNull();
+  });
 });

@@ -89,9 +89,8 @@ schema.pre('save', async function (next) {
 schema.post('save', (error, doc, next) => {
   if (error.code === 11000) {
     next(new Error('The username already exists!, try with another one'));
-  } else {
-    next();
   }
+  next();
 });
 
 module.exports = mongoose.model('User', schema);
