@@ -8,7 +8,7 @@ describe('Update a user unit test', () => {
   let idUser = null;
 
   beforeAll(async () => {
-    await connectDB();
+    await connectDB({});
     let users = await User.find({});
     if (users.length === 0) {
       await User.insertMany(usersData);
@@ -29,7 +29,6 @@ describe('Update a user unit test', () => {
     };
     const expectData = 'Ernesto Gomez';
     const response = await updateUser(null, user);
-    console.log(response);
 
     expect(response.fullName).toBe(expectData);
   });

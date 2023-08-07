@@ -6,7 +6,7 @@ const Permission = require('../../../models/permission');
 
 describe('Update a permission unit test', () => {
   beforeAll(async () => {
-    await connectDB();
+    await connectDB({});
     let permissions = await Permission.find({});
     if (permissions.length === 0) {
       await Permission.insertMany(permissionsData);

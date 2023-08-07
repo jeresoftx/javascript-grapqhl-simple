@@ -8,7 +8,7 @@ describe('Delete user unit test', () => {
   let idUser = null;
 
   beforeAll(async () => {
-    await connectDB();
+    await connectDB({});
     let users = await User.find({});
     if (users.length === 0) {
       await User.insertMany(usersData);

@@ -2,7 +2,7 @@
 
 The new functionality was added to be able to add users in the database.
 
-Fixes # (issue)
+Closes # (issue)
 
 ## Type of change
 
@@ -13,7 +13,7 @@ Please delete options that are not relevant.
 - [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
 - [ ] This change requires a documentation update
 - [ ] Automation Test Update
-- [ ] Configuratio Update (if none of the other choices apply)
+- [ ] Configuration Update (if none of the other choices apply)
 - [ ] Documentation Update (if none of the other choices apply)
 
 # How Has This Been Tested?
