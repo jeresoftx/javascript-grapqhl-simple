@@ -101,4 +101,7 @@ type Mutation {
     name: NonEmptyString!
     description: NonEmptyString!
   ): Permission
+
+  "Delete a existing permission"
+  deletePermission(id: ID!): Boolean!
 }
