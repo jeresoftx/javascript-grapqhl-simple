@@ -26,16 +26,27 @@ type Phone {
   email: PhoneNumber!
   main: Boolean!
 }
+
+type Permission {
+  id: ID!
+  name: String!
+  description: String
+  createdAt: DateTime!
+  updateAt: DateTime!
+}
+
 input paramsInput {
   offset: PositiveInt
   limit: PositiveInt
   sort: JSON
   filter: JSON
 }
+
 input emailInput {
   email: EmailAddress!
   main: Boolean!
 }
+
 input phoneInput {
   phone: PhoneNumber!
   main: Boolean!
@@ -47,8 +58,12 @@ type Query {
 
   "User lists"
   users(params: paramsInput!): [User!]!
+
   "User lists"
   user(id: ID!): User
+
+  "Permission lists"
+  permissions(params: paramsInput!): [User!]!
 }
 
 type Mutation {
