@@ -5,6 +5,7 @@ scalar PositiveInt
 scalar JSON
 scalar NonEmptyString
 
+"User object"
 type User {
   id: ID!
   name: String!
@@ -17,16 +18,19 @@ type User {
   updateAt: DateTime!
 }
 
+"Email object. The main email is the one with the variable main equal to true"
 type Email {
   email: EmailAddress!
   main: Boolean!
 }
 
+"Email object. The main phone is the one with the variable main equal to true"
 type Phone {
   email: PhoneNumber!
   main: Boolean!
 }
 
+"Permission object"
 type Permission {
   id: ID!
   name: String!
@@ -59,14 +63,18 @@ type Query {
   "User lists"
   users(params: paramsInput!): [User!]!
 
-  "User lists"
+  "Read one user"
   user(id: ID!): User
 
   "Permission lists"
-  permissions(params: paramsInput!): [User!]!
+  permissions(params: paramsInput!): [Permission!]!
+
+  "Read one permission"
+  permission(id: ID!): Permission
 }
 
 type Mutation {
+  "Create a new user"
   addUser(
     name: NonEmptyString!
     lastName: NonEmptyString!
@@ -76,7 +84,21 @@ type Mutation {
     password: String!
   ): User!
 
+  "Delete a existing user"
   deleteUser(id: ID!): Boolean!
 
-  updateUser(name: NonEmptyString!, lastName: NonEmptyString!): User!
+  "Update a new user"
+  updateUser(name: NonEmptyString!, lastName: NonEmptyString!): User
+
+  "Create a new user"
+  addPermission(
+    name: NonEmptyString!
+    description: NonEmptyString!
+  ): Permission!
+
+  "Update a new user"
+  updatePermission(
+    name: NonEmptyString!
+    description: NonEmptyString!
+  ): Permission
 }
