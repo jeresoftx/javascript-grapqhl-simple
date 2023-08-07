@@ -46,3 +46,27 @@ describe('Add user unit test', () => {
     expect(response).toMatchObject(expectData);
   });
 });
+
+describe('Add user unit test', () => {
+  beforeAll(async () => {
+    await connectDB({ testing: false });
+  });
+
+  afterAll(async () => {
+    await disconnectDB();
+  });
+
+  it('Should be returns a error', async () => {
+    const user = {
+      name: 'Benjamin',
+      lastName: 'Alvarez',
+      username: 'benAlvarez',
+      email: 'jeresoft+2@gmail.com',
+      phone: '6691210703',
+      password: 'cochiverde',
+    };
+    await expect(addUser(null, user)).resolves.toThrowError(
+      'The username already exists!, try with another one',
+    );
+  });
+});
