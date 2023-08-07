@@ -27,8 +27,10 @@ describe('Update a user unit test', () => {
       name: 'Ernesto',
       lastName: 'Gomez',
     };
+    const expectData = 'Ernesto Gomez';
     const response = await updateUser(null, user);
+    console.log(response);
 
-    expect(response).toMatchObject(user);
+    expect(response.fullName).toBe(expectData);
   });
 });
