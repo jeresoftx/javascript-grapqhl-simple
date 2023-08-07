@@ -5,8 +5,7 @@
     "description": "users list",
     "active": true,
     "createdAt": "2023-07-29T00:00:13.000Z",
-    "updatedAt": "2023-07-29T00:00:13.000Z",
-    "__v": 0
+    "updatedAt": "2023-07-29T00:00:13.000Z"
   },
   {
     "_id": "6466bc0aa1ca2e6dca0597cb",
@@ -14,8 +13,7 @@
     "description": "read a user",
     "active": true,
     "createdAt": "2023-07-29T00:00:13.000Z",
-    "updatedAt": "2023-07-29T00:00:13.000Z",
-    "__v": 0
+    "updatedAt": "2023-07-29T00:00:13.000Z"
   },
   {
     "_id": "6466bc0aa1ca2e6dca0394cb",
@@ -23,8 +21,7 @@
     "description": "add a user",
     "active": true,
     "createdAt": "2023-07-29T00:00:13.000Z",
-    "updatedAt": "2023-07-29T00:00:13.000Z",
-    "__v": 0
+    "updatedAt": "2023-07-29T00:00:13.000Z"
   },
   {
     "_id": "6466bc0aa1ca2e6dca1294cb",
@@ -32,8 +29,7 @@
     "description": "update a User",
     "active": true,
     "createdAt": "2023-07-29T00:00:13.000Z",
-    "updatedAt": "2023-07-29T00:00:13.000Z",
-    "__v": 0
+    "updatedAt": "2023-07-29T00:00:13.000Z"
   },
   {
     "_id": "6466bc0aa1ca2e6dca1594cb",
@@ -41,7 +37,6 @@
     "description": "delete a User",
     "active": true,
     "createdAt": "2023-07-29T00:00:13.000Z",
-    "updatedAt": "2023-07-29T00:00:13.000Z",
-    "__v": 0
+    "updatedAt": "2023-07-29T00:00:13.000Z"
   }
 ]
