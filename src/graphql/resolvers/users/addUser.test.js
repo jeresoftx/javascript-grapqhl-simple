@@ -3,11 +3,11 @@ const { connectDB, disconnectDB } = require('../../../db/connectDB');
 
 describe('Add user unit test', () => {
   beforeAll(async () => {
-    connectDB();
+    await connectDB({});
   });
 
   afterAll(async () => {
-    disconnectDB();
+    await disconnectDB();
   });
 
   it('returns a new user', async () => {

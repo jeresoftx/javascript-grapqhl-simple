@@ -5,7 +5,7 @@ const User = require('../../../models/user');
 
 describe('Users unit test', () => {
   beforeAll(async () => {
-    await connectDB();
+    await connectDB({});
     await User.insertMany(usersData);
   });
 

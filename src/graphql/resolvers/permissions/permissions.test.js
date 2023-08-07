@@ -5,12 +5,12 @@ const Permission = require('../../../models/permission');
 
 describe('Permissions unit test', () => {
   beforeAll(async () => {
-    await connectDB();
+    await connectDB({});
     await Permission.insertMany(permissionsData);
   });
 
   afterAll(async () => {
-    await disconnectDB();
+    await disconnectDB({});
   });
 
   it('returns a permissions list', async () => {
