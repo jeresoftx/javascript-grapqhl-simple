@@ -1,5 +1,13 @@
 [
   {
+    "_id": "6466bc0aa1ca2e6dca0597bf",
+    "name": "*",
+    "description": "All",
+    "active": true,
+    "createdAt": "2023-07-29T00:00:13.000Z",
+    "updatedAt": "2023-07-29T00:00:13.000Z"
+  },
+  {
     "_id": "6466bc0aa1ca2e6dca0597bb",
     "name": "users",
     "description": "users list",
@@ -35,6 +43,14 @@
     "_id": "6466bc0aa1ca2e6dca1594cb",
     "name": "deleteUser",
     "description": "delete a User",
+    "active": true,
+    "createdAt": "2023-07-29T00:00:13.000Z",
+    "updatedAt": "2023-07-29T00:00:13.000Z"
+  },
+  {
+    "_id": "6466bc0aa1ca2e5dca1294cb",
+    "name": "permissions",
+    "description": "permission list",
     "active": true,
     "createdAt": "2023-07-29T00:00:13.000Z",
     "updatedAt": "2023-07-29T00:00:13.000Z"
