@@ -1,5 +1,5 @@
 const queryUsers = `
-  query users($params: paramsInput!) {
+  query users($params: ParamsInput!) {
     users(params: $params) {
       fullName
     }

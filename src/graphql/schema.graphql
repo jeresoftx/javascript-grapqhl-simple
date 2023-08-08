@@ -39,21 +39,42 @@ type Permission {
   updateAt: DateTime!
 }
 
-input paramsInput {
+"Permission object"
+type PermissionEmbeded {
+  id: ID!
+  name: String!
+}
+
+"Role object"
+type Role {
+  id: ID!
+  name: String!
+  description: String
+  permissions: [PermissionEmbeded!]
+  createdAt: DateTime!
+  updateAt: DateTime!
+}
+
+input ParamsInput {
   offset: PositiveInt
   limit: PositiveInt
   sort: JSON
   filter: JSON
 }
 
-input emailInput {
+input EmailInput {
   email: EmailAddress!
   main: Boolean!
 }
 
-input phoneInput {
+input PhoneInput {
   phone: PhoneNumber!
   main: Boolean!
+}
+
+input PermissionInput {
+  _id: ID!
+  name: NonEmptyString!
 }
 
 type Query {
@@ -61,13 +82,13 @@ type Query {
   version: String!
 
   "User lists"
-  users(params: paramsInput!): [User!]!
+  users(params: ParamsInput!): [User!]!
 
   "Read one user"
   user(id: ID!): User
 
   "Permission lists"
-  permissions(params: paramsInput!): [Permission!]!
+  permissions(params: ParamsInput!): [Permission!]!
 
   "Read one permission"
   permission(id: ID!): Permission
@@ -90,13 +111,13 @@ type Mutation {
   "Update a new user"
   updateUser(name: NonEmptyString!, lastName: NonEmptyString!): User
 
-  "Create a new user"
+  "Create a new permission"
   addPermission(
     name: NonEmptyString!
     description: NonEmptyString!
   ): Permission!
 
-  "Update a new user"
+  "Update a new permission"
   updatePermission(
     name: NonEmptyString!
     description: NonEmptyString!
@@ -104,4 +125,24 @@ type Mutation {
 
   "Delete a existing permission"
   deletePermission(id: ID!): Boolean!
+
+  "Create a new role"
+  addRole(
+    name: NonEmptyString!
+    description: NonEmptyString!
+    permission: PermissionInput!
+  ): Role!
+
+  "Update a new role"
+  updateRole(
+    name: NonEmptyString!
+    description: NonEmptyString!
+    permission: PermissionInput!
+  ): Role
+
+  "Delete a existing role"
+  deleteRole(id: ID!): Boolean!
+
+  addPermissionToRole(idRole: ID!, idPermission: ID!): Boolean!
+  removePermissionToRole(idRole: ID!, idPermission: ID!): Boolean!
 }
