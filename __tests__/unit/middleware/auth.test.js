@@ -1,6 +1,8 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable operator-linebreak */
 /* eslint-disable import/no-extraneous-dependencies */
 const mockingoose = require('mockingoose');
+const jwt = require('jsonwebtoken');
 
 const { auth } = require('../../../src/middleware/auth');
 const { mockRequest, mockResponse } = require('./__mocks__/Request.mock');
@@ -74,12 +76,21 @@ describe('Test Authorization middleware', () => {
       'findOne',
     );
     const res = {};
-    const token =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDY2YmMwYWExY2EyZTZkY2EwNTk3Y2IiLCJ1c2VybmFtZSI6ImplcmVzb2Z0IiwiaWF0IjoxNjkxNzI0NzA0LCJleHAiOjE2OTQzMTY3MDR9.ThnuPMCitWz0eUhowl4VinQrI8p4dmXfxCpSz77Cvok';
+    const token2 =
+      'edJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDY2YmMwYWExY2EyZTZkY2EwNTk3Y2IiLCJ1c2VybmFtZSI6ImplcmVzb2Z0IiwiaWF0IjoxNjkxNzI0NzA0LCJleHAiOjE2OTQzMTY3MDR9.ThnuPMCitWz0eUhowl4VinQrI8p4dmXfxCpSz77Cvok';
     const req = mockRequest({
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token2}`,
       'user-agent': 'jest',
     });
+    jest.spyOn(jwt, 'verify').mockImplementation(
+      jest.fn((token, secretOrPublicKey, callback) => {
+        const result = {
+          userId: '6466bc0aa1ca2e6dca0597cb',
+          email: 'cool@dude.com',
+        };
+        return result;
+      }),
+    );
     await auth(req, res, () => {});
     await expect(res.isAuth).toBe(true);
   });
