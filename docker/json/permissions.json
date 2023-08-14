@@ -1,7 +1,7 @@
 [
   {
     "_id": {
-      "$oid": "6466bc0aa1ca2e6dca0597cb"
+      "$oid": "6466bc0ac1ca2e6dca0597cb"
     },
     "name": "permissions",
     "description": "Call used to browse a exist permision.",
@@ -15,7 +15,7 @@
   },
   {
     "_id": {
-      "$oid": "6466bc0aa1ca2e6dca0597cb"
+      "$oid": "6466bc0ab1ca2e6dca0597cb"
     },
     "name": "readPermision",
     "description": "Call used to read a exist permision.",
@@ -57,7 +57,7 @@
   },
   {
     "_id": {
-      "$oid": "6466bc0aa1ca2e6dca0597cb"
+      "$oid": "6466bc0aa1ca2e6dca0595cb"
     },
     "name": "deletePermision",
     "description": "Call used to delete a exist permision.",

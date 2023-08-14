@@ -1,7 +1,9 @@
 const pjson = require('../../../../package.json');
 
-module.exports = async () => {
+const versionQ = async () => {
   const { name, description, version } = pjson;
 
   return `${name} - ${version} ${description}`;
 };
+
+module.exports = { versionQ };

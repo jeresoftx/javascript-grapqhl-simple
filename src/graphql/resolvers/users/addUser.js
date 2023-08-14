@@ -7,13 +7,9 @@ const addUser = async (parent, data) => {
     phones: [{ phone: data.phone, main: true }],
     emails: [{ email: data.email, main: true }],
   };
-  try {
-    const user = new User(userData);
-    await user.save();
-    return user;
-  } catch (error) {
-    return error;
-  }
+  const user = new User(userData);
+  await user.save();
+  return user;
 };
 
 module.exports = { addUser };

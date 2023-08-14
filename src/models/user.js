@@ -76,13 +76,9 @@ const schema = new Schema(
 
 // eslint-disable-next-line func-names
 schema.pre('save', async function (next) {
-  if (this.name) {
-    this.fullName = `${this.name} ${this.lastName}`;
-  }
-  if (this.password) {
-    const salt = bcrypt.genSaltSync(10);
-    this.password = await bcrypt.hash(this.password, salt);
-  }
+  this.fullName = `${this.name} ${this.lastName}`;
+  const salt = bcrypt.genSaltSync(10);
+  this.password = await bcrypt.hash(this.password, salt);
   next();
 });
 

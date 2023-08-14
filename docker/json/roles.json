@@ -6,10 +6,8 @@
     "name": "Super Admin",
     "permissions": [
       {
-        "_id": {
-          "$oid": "6466bc0aa1ca2e6dca0597bb"
-        },
-        "name": "*"
+        "id": "6466bc0aa1ca2e6dca0597bb",
+        "permission": "*"
       }
     ],
     "createdAt": {
@@ -27,28 +25,20 @@
     "name": "Admin",
     "permissions": [
       {
-        "_id": {
-          "$oid": "6466bc0aa1ca2e6dca0597cb"
-        },
-        "name": "browseUser"
+        "id": "6466bc0aa1cf2e6dca0597cb",
+        "permission": "browseUser"
       },
       {
-        "_id": {
-          "$oid": "6466bc0aa1ca2e6dca0597cb"
-        },
-        "name": "readUser"
+        "id": "6466bc0aa1c32e6dca0597cb",
+        "permission": "readUser"
       },
       {
-        "_id": {
-          "$oid": "6466bc0aa1ca2e6dca0597ca"
-        },
-        "name": "editUser"
+        "id": "6466bc0aa1ca2e6dca0597ca",
+        "permission": "editUser"
       },
       {
-        "_id": {
-          "$oid": "6466bc0aa1ca2e6dca0597ce"
-        },
-        "name": "addUser"
+        "id": "6466bc0aa1ca2e6dca0597ce",
+        "permission": "addUser"
       }
     ],
     "createdAt": {

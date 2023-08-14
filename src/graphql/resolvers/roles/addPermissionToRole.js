@@ -18,7 +18,7 @@ const addPermissionToRole = async (parent, { idRole, idPermission }) => {
   // check if permission exists
   if (role.permissions.length > 0) {
     const foundPermission = role.permissions.findIndex(
-      (element) => element._id.toString() === idPermission,
+      (element) => element.id.toString() === idPermission,
     );
     if (foundPermission !== -1) {
       return role;
@@ -26,8 +26,7 @@ const addPermissionToRole = async (parent, { idRole, idPermission }) => {
   }
 
   // add the role
-  role.permissions.push({ _id: permission.id, name: permission.name });
-  console.log(role.permissions);
+  role.permissions.push({ id: permission.id, permission: permission.name });
   await role.save();
   return role;
 };
