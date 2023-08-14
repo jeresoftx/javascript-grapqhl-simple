@@ -1,5 +1,5 @@
-const version = require('./version');
+const { versionQ } = require('./version');
 
 module.exports = {
-  version,
+  version: versionQ,
 };

@@ -15,7 +15,13 @@ const schema = new Schema(
     permissions: {
       type: [
         new Schema({
-          pemrission: {
+          _id: false,
+          id: {
+            type: Schema.Types.ObjectId,
+            ref: 'Permission',
+            require: true,
+          },
+          permission: {
             type: String,
           },
         }),

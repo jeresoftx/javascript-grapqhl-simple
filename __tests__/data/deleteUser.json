@@ -1,0 +1,30 @@
+[
+  {
+    "_id": "6466bc0aa1ca2e6dca0597cd",
+    "username": "delete",
+    "name": "Delete",
+    "lastName": "Test",
+    "fullName": "Delete Test",
+    "emails": [
+      {
+        "email": "jeresoft@gmail.com",
+        "main": true
+      },
+      {
+        "email": "jeresoft+other@gmail.com",
+        "main": false
+      }
+    ],
+    "phones": [
+      {
+        "phone": "6691230103",
+        "main": true
+      }
+    ],
+    "roles": ["superAdmin"],
+    "password": "$2b$10$RzC8NKC0jyd9VZ.4Ys.IiuGAvJtgkSIjRwFNXA7yy1SV4Uqi1mZe2",
+    "createdAt": "2023-07-29T00:00:13.000Z",
+    "updatedAt": "2023-07-29T00:00:13.000Z",
+    "lastConnected": "2023-07-29T00:00:13.000Z"
+  }
+]
