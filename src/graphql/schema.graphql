@@ -87,6 +87,9 @@ type Query {
   "Read one user"
   user(id: ID!): User
 
+  "Read my info"
+  me: User
+
   "Permission lists"
   permissions(params: ParamsInput!): [Permission!]!
 
