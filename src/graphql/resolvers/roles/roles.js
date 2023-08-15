@@ -1,6 +1,8 @@
+const { isAuthorized } = require('../../../middleware/isAuthorized');
 const Role = require('../../../models/role');
 
-const roles = async (parent, { params }) => {
+const roles = async (parent, { params }, context) => {
+  isAuthorized(context);
   const {
     offset = 0,
     limit = 10,

@@ -1,6 +1,8 @@
+const { isAuthorized } = require('../../../middleware/isAuthorized');
 const User = require('../../../models/user');
 
-const addUser = async (parent, data) => {
+const addUser = async (parent, data, context) => {
+  isAuthorized(context);
   const userData = {
     ...data,
     fullName: `${data.name} ${data.lastName}`,

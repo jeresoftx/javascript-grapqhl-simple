@@ -1,7 +1,8 @@
-/* eslint-disable import/no-extraneous-dependencies */
+const { isAuthorized } = require('../../../middleware/isAuthorized');
 const Role = require('../../../models/role');
 
-const updateRole = async (parent, data) => {
+const updateRole = async (parent, data, context) => {
+  isAuthorized(context);
   const { id, name, description } = data;
   const role = await Role.findOne({ _id: id });
   if (!role) {

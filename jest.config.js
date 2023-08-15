@@ -20,4 +20,5 @@ module.exports = {
       lines: 100,
     },
   },
+  coveragePathIgnorePatterns: ['<rootDir>/__tests__'],
 };

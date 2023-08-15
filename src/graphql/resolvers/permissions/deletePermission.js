@@ -1,9 +1,11 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const Dayjs = require('dayjs');
 
+const { isAuthorized } = require('../../../middleware/isAuthorized');
 const Permission = require('../../../models/permission');
 
-const deletePermission = async (parent, { id }) => {
+const deletePermission = async (parent, { id }, context) => {
+  isAuthorized(context);
   const permission = await Permission.findOne({ _id: id });
   if (!permission) {
     return false;

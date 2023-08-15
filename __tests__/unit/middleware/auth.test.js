@@ -8,6 +8,7 @@ const { auth } = require('../../../src/middleware/auth');
 const { mockRequest, mockResponse } = require('./__mocks__/Request.mock');
 
 const Token = require('../../../src/models/token');
+const User = require('../../../src/models/user');
 
 describe('Test Authorization middleware', () => {
   beforeEach(() => {});
@@ -38,7 +39,7 @@ describe('Test Authorization middleware', () => {
     await expect(res.isAuth).toBe(false);
   });
 
-  it('should return auth true', async () => {
+  it('should return auth true type LOGIN', async () => {
     mockingoose(Token).toReturn(
       {
         _id: '64d5aba0ce590b034c6f2b6b',
@@ -51,13 +52,30 @@ describe('Test Authorization middleware', () => {
       },
       'findOne',
     );
+    mockingoose(User).toReturn(
+      {
+        _id: '6466bc0aa1ca2e6dca0597cb',
+        roles: ['*'],
+        active: true,
+      },
+      'findOne',
+    );
     const res = {};
-    const token =
+    const token2 =
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDY2YmMwYWExY2EyZTZkY2EwNTk3Y2IiLCJ1c2VybmFtZSI6ImplcmVzb2Z0IiwiaWF0IjoxNjkxNzI0NzA0LCJleHAiOjE2OTQzMTY3MDR9.ThnuPMCitWz0eUhowl4VinQrI8p4dmXfxCpSz77Cvok';
     const req = mockRequest({
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token2}`,
       'user-agent': 'jest',
     });
+    jest.spyOn(jwt, 'verify').mockImplementation(
+      jest.fn((token, secretOrPublicKey, callback) => {
+        const result = {
+          userId: '6466bc0aa1ca2e6dca0597cb',
+          email: 'cool@dude.com',
+        };
+        return result;
+      }),
+    );
     await auth(req, res, () => {});
     await expect(res.isAuth).toBe(true);
   });
@@ -87,12 +105,15 @@ describe('Test Authorization middleware', () => {
         const result = {
           userId: '6466bc0aa1ca2e6dca0597cb',
           email: 'cool@dude.com',
+          roles: ['*'],
         };
         return result;
       }),
     );
     await auth(req, res, () => {});
     await expect(res.isAuth).toBe(true);
+    await expect(res.user.id).toBe('6466bc0aa1ca2e6dca0597cb');
+    await expect(res.user.roles).toMatchObject(['*']);
   });
 
   it('should return auth false (the token is wrong encode)', async () => {
