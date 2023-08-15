@@ -1,9 +1,13 @@
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable import/no-extraneous-dependencies */
+const { isAuthorized } = require('../../../middleware/isAuthorized');
 const Role = require('../../../models/role');
 const Permission = require('../../../models/permission');
 
-const addPermissionToRole = async (parent, { idRole, idPermission }) => {
+const addPermissionToRole = async (
+  parent,
+  { idRole, idPermission },
+  context,
+) => {
+  isAuthorized(context);
   const role = await Role.findOne({ _id: idRole });
   if (!role) {
     throw new Error(`INFO | The role with ${idRole} doesn't exists!`);

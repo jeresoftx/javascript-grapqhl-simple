@@ -1,5 +1,3 @@
 {
-  "**/*.{js,jx}": [
-    "eslint"
-  ]
+  "**/*.{js,jx}": ["eslint --fix"]
 }

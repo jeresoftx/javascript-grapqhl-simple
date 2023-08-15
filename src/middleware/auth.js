@@ -52,6 +52,11 @@ const auth = async (req, res, next) => {
     return next();
   }
 
+  const user = await User.findOne({
+    _id: decodedToken.userId,
+    active: true,
+  });
+
   await User.updateOne(
     {
       _id: decodedToken.userId,
@@ -62,8 +67,9 @@ const auth = async (req, res, next) => {
     },
   );
 
+  // eslint-disable-next-line no-underscore-dangle
+  res.user = { ...user._doc, id: user.id };
   res.isAuth = true;
-  res.userId = decodedToken.userId;
   res.token = token;
   return next();
 };

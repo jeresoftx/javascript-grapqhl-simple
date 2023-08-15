@@ -60,7 +60,7 @@ const schema = new Schema(
       type: String,
       required: true,
     },
-    lastconnected: {
+    lastConnected: {
       type: Schema.Types.Date,
     },
     active: {

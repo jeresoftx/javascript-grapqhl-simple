@@ -13,9 +13,6 @@ describe('DB connection test', () => {
 
   it('Should connect to db', async () => {
     await disconnectDB();
-    console.log({
-      url: `${process.env.DB_HOST}/${process.env.DB_NAME}`,
-    });
     const connection = await connectDB({
       url: `${process.env.DB_HOST}/${process.env.DB_NAME}`,
     });

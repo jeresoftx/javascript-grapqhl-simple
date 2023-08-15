@@ -22,7 +22,7 @@ const apolloServer = async () => {
       const operation =
         obj.definitions[0].selectionSet.selections[0].name.value;
       return {
-        userId: res.userId,
+        user: res.user,
         token: res.token,
         isAuth: res.isAuth,
         operation,
