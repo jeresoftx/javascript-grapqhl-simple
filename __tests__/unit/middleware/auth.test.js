@@ -108,6 +108,11 @@ describe('Test Authorization middleware', () => {
       },
       'findOne',
     );
+    jest.spyOn(jwt, 'verify').mockImplementation(
+      jest.fn((token, secretOrPublicKey, callback) => {
+        throw new Error('jwt error');
+      }),
+    );
     const res = {};
     const token =
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWfiOiI2NDY2YmMwYWExY2EyZTZkY2EwNTk3Y2IiLCJ1c2VybmFtZSI6ImplcmVzb2Z0IiwiaWF0IjoxNjkxNzI0NzA0LCJleHAiOjE2OTQzMTY3MDR9.ThnuPMCitWz0eUhowl4VinQrI8p4dmXfxCpSz77Cvok';
@@ -131,6 +136,15 @@ describe('Test Authorization middleware', () => {
         active: true,
       },
       'findOne',
+    );
+    jest.spyOn(jwt, 'verify').mockImplementation(
+      jest.fn((token, secretOrPublicKey, callback) => {
+        const result = {
+          userId: '6466bc0aa1ca2e6dca0597cb',
+          email: 'cool@dude.com',
+        };
+        return result;
+      }),
     );
     const res = {};
     const token =
