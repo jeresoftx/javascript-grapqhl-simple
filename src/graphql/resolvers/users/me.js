@@ -1,8 +1,8 @@
 const User = require('../../../models/user');
 
-module.exports = async (parent, data, context) => {
+const me = async (parent, data, context) => {
   if (!context.isAuth) {
-    throw new Error('Token has expired!');
+    throw new Error('No Authorize!');
   }
 
   const user = await User.findOne({
@@ -10,5 +10,10 @@ module.exports = async (parent, data, context) => {
     active: true,
   });
 
+  if (!user) {
+    throw new Error('No Authorize!');
+  }
+
   return user;
 };
+module.exports = { me };
