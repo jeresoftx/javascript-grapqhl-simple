@@ -8,12 +8,14 @@ const Token = require('../models/token');
 config();
 
 const auth = async (req, res, next) => {
+  const context = {
+    isAuth: false,
+  };
   let authHeader = req.get('Authorization');
-  res.userAgent = req.get('user-agent');
-  res.ip = req.headers['x-forwarded-for'];
-
+  context.userAgent = req.get('user-agent');
+  context.ip = req.headers['x-forwarded-for'];
+  res.context = context;
   if (!authHeader) {
-    res.isAuth = false;
     return next();
   }
 
@@ -21,7 +23,6 @@ const auth = async (req, res, next) => {
   const token = authHeader[1];
 
   if (!token) {
-    res.isAuth = false;
     return next();
   }
 
@@ -31,7 +32,6 @@ const auth = async (req, res, next) => {
   });
 
   if (!tokenData) {
-    res.isAuth = false;
     return next();
   }
 
@@ -41,14 +41,12 @@ const auth = async (req, res, next) => {
   } catch (err) {
     tokenData.active = false;
     tokenData.save();
-    res.isAuth = false;
     return next();
   }
 
   if (tokenData.type !== 'LOGIN' && tokenData.type !== 'APP') {
     tokenData.active = false;
     tokenData.save();
-    res.isAuth = false;
     return next();
   }
 
@@ -56,6 +54,7 @@ const auth = async (req, res, next) => {
     _id: decodedToken.userId,
     active: true,
   });
+  context.roles = user.roles;
 
   await User.updateOne(
     {
@@ -67,10 +66,11 @@ const auth = async (req, res, next) => {
     },
   );
 
+  context.isAuth = true;
+  context.token = token;
   // eslint-disable-next-line no-underscore-dangle
-  res.user = { ...user._doc, id: user.id };
-  res.isAuth = true;
-  res.token = token;
+  context.user = { ...user._doc, id: user.id };
+  res.context = context;
   return next();
 };
 

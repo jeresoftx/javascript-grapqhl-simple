@@ -1,14 +1,14 @@
 const versionQuery = require('./version/query');
-const usersQuery = require('./users/query');
-const usersMutation = require('./users/mutation');
+const userQuery = require('./users/query');
+const userMutation = require('./users/mutation');
 
 const resolvers = {
   Query: {
     ...versionQuery,
-    ...usersQuery,
+    ...userQuery,
   },
   Mutation: {
-    ...usersMutation,
+    ...userMutation,
   },
 };
 

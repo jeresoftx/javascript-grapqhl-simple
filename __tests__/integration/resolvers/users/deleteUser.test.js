@@ -7,12 +7,14 @@ const {
   expressServer,
   closeExpressServer,
 } = require('../../../../src/server/server');
-const { queryUser } = require('./features/query/query.user');
+const {
+  mutationDeleteUser,
+} = require('./features/mutation/mutation.deleteUser');
 const { isAuthorized } = require('../../../../src/middleware/isAuthorized');
 
 jest.mock('../../../../src/middleware/isAuthorized');
 
-describe('Read user integration test', () => {
+describe('Add user unit test', () => {
   let app;
 
   beforeAll(async () => {
@@ -23,20 +25,22 @@ describe('Read user integration test', () => {
     isAuthorized.mockClear();
   });
 
-  it('Read a User', async () => {
+  it('Can Add a new user', async () => {
     isAuthorized.mockReturnValue(true);
+    await User.deleteMany({});
     await User.insertMany(usersData);
     const response = await request(app)
       .post('/')
       .set('content-type', 'application/json')
       .set('uer-agent', 'jest')
       .send({
-        query: queryUser,
-        variables: { id: '6466bc0aa1ca2e6dca0597cb' },
+        query: mutationDeleteUser,
+        variables: {
+          id: '6466bc0aa1ca2e6dca0597cb',
+        },
       });
-
-    expect(response.errors).toBeUndefined();
-    expect(response.body?.data?.user?.fullName).toBe('Joel Alvarez Mexia');
+    await expect(response.errors).toBeUndefined();
+    await expect(response.body?.data?.deleteUser).toEqual(true);
     await closeExpressServer();
   });
 });

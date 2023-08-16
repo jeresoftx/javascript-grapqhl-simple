@@ -1,14 +1,14 @@
 const Role = require('../models/role');
 
-const isAuthorized = async (data) => {
-  if (!data.context.isAuth || !data.context.roles) {
+const isAuthorized = async (context) => {
+  if (!context.isAuth || !context.roles) {
     throw new Error('Unauthorized!');
   }
   // check the permission
-  const superAdminIndex = data.context.roles.findIndex((role) => role === '*');
+  const superAdminIndex = context.roles.findIndex((role) => role === '*');
   if (superAdminIndex === -1) {
     const roles = await Role.find({
-      name: { $in: data.context.roles },
+      name: { $in: context.roles },
       active: true,
     });
     let havePermission = false;
@@ -17,8 +17,9 @@ const isAuthorized = async (data) => {
         if (role.permissions.length > 0) {
           role.permissions.forEach((permission) => {
             if (
-              permission.permission === data.context.operation
-              || permission.permission === '*'
+              // eslint-disable-next-line operator-linebreak
+              permission.permission === context.operation ||
+              permission.permission === '*'
             ) {
               havePermission = true;
             }

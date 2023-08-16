@@ -6,24 +6,28 @@ const usersData = require('../../../data/users.json');
 const {
   expressServer,
   closeExpressServer,
-} = require('../../../../src/server/expressServer');
+} = require('../../../../src/server/server');
 const { queryUsers } = require('./features/query/query.users');
 const { isAuthorized } = require('../../../../src/middleware/isAuthorized');
 
 jest.mock('../../../../src/middleware/isAuthorized');
 
 describe('User list integration test', () => {
+  let app;
+
+  beforeAll(async () => {
+    app = await expressServer({});
+  });
+
   beforeEach(() => {
     isAuthorized.mockClear();
   });
 
   it('User list', async () => {
     isAuthorized.mockReturnValue(true);
-    const express = await expressServer({});
-    const { app } = express;
     await User.insertMany(usersData);
     const response = await request(app)
-      .post('/graphql')
+      .post('/')
       .set('content-type', 'application/json')
       .set('uer-agent', 'jest')
       .send({
