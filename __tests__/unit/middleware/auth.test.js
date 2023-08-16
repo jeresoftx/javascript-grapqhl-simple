@@ -17,7 +17,7 @@ describe('Test Authorization middleware', () => {
     const req = mockRequest({});
     const res = mockResponse({});
     await auth(req, res, () => {});
-    await expect(res.isAuth).toBe(false);
+    await expect(res.context.isAuth).toBe(false);
   });
 
   it('Should be auth equal to false without token', async () => {
@@ -26,7 +26,7 @@ describe('Test Authorization middleware', () => {
     });
     const res = mockResponse({});
     await auth(req, res, () => {});
-    await expect(res.isAuth).toBe(false);
+    await expect(res.context.isAuth).toBe(false);
   });
 
   it('Should be auth equal to false without token into the database', async () => {
@@ -36,7 +36,7 @@ describe('Test Authorization middleware', () => {
     });
     const res = mockResponse({});
     await auth(req, res, () => {});
-    await expect(res.isAuth).toBe(false);
+    await expect(res.context.isAuth).toBe(false);
   });
 
   it('should return auth true type LOGIN', async () => {
@@ -77,7 +77,7 @@ describe('Test Authorization middleware', () => {
       }),
     );
     await auth(req, res, () => {});
-    await expect(res.isAuth).toBe(true);
+    await expect(res.context.isAuth).toBe(true);
   });
 
   it('should return auth true', async () => {
@@ -111,9 +111,9 @@ describe('Test Authorization middleware', () => {
       }),
     );
     await auth(req, res, () => {});
-    await expect(res.isAuth).toBe(true);
-    await expect(res.user.id).toBe('6466bc0aa1ca2e6dca0597cb');
-    await expect(res.user.roles).toMatchObject(['*']);
+    await expect(res.context.isAuth).toBe(true);
+    await expect(res.context.user.id).toBe('6466bc0aa1ca2e6dca0597cb');
+    await expect(res.context.user.roles).toMatchObject(['*']);
   });
 
   it('should return auth false (the token is wrong encode)', async () => {
@@ -142,7 +142,7 @@ describe('Test Authorization middleware', () => {
       'user-agent': 'jest',
     });
     await auth(req, res, () => {});
-    await expect(res.isAuth).toBe(false);
+    await expect(res.context.isAuth).toBe(false);
   });
 
   it('should return auth false because the token type is wrong', async () => {
@@ -175,6 +175,6 @@ describe('Test Authorization middleware', () => {
       'user-agent': 'jest',
     });
     await auth(req, res, () => {});
-    await expect(res.isAuth).toBe(false);
+    await expect(res.context.isAuth).toBe(false);
   });
 });

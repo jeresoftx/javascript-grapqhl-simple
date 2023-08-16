@@ -112,7 +112,7 @@ type Mutation {
   deleteUser(id: ID!): Boolean!
 
   "Update a new user"
-  updateUser(name: NonEmptyString!, lastName: NonEmptyString!): User
+  editUser(id: ID!, name: NonEmptyString!, lastName: NonEmptyString!): User
 
   "Create a new permission"
   addPermission(
@@ -148,4 +148,5 @@ type Mutation {
 
   addPermissionToRole(idRole: ID!, idPermission: ID!): Boolean!
   removePermissionToRole(idRole: ID!, idPermission: ID!): Boolean!
+  login(username: String!, password: String!): String!
 }

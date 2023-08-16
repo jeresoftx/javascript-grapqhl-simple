@@ -5,11 +5,6 @@ const mockRequest = (headers) => ({
   headers,
 });
 
-const mockResponse = () => {
-  const res = {};
-  res.status = jest.fn().mockReturnValue(res);
-  res.json = jest.fn().mockReturnValue(res);
-  return res;
-};
+const mockResponse = () => ({});
 
 module.exports = { mockRequest, mockResponse };

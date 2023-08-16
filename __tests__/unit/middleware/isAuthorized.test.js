@@ -14,45 +14,37 @@ describe('Test Authorization middleware', () => {
   });
 
   it('Should be auth equal to false without authorization headers', async () => {
-    const data = {
-      context: {
-        isAuth: false,
-      },
+    const context = {
+      isAuth: false,
     };
-    const response = isAuthorized(data);
+    const response = isAuthorized(context);
     await expect(response).rejects.toThrow(Error);
     await expect(response).rejects.toThrow('Unauthorized!');
   });
 
   it('Should be auth equal to false without authorization headers', async () => {
-    const data = {
-      context: {
-        isAuth: true,
-      },
+    const context = {
+      isAuth: true,
     };
-    const response = isAuthorized(data);
+    const response = isAuthorized(context);
     await expect(response).rejects.toThrow(Error);
     await expect(response).rejects.toThrow('Unauthorized!');
   });
 
   it('Should be auth equal to false without authorization headers', async () => {
-    const data = {
-      context: {
-        isAuth: true,
-        roles: ['*'],
-      },
+    const context = {
+      isAuth: true,
+      roles: ['*'],
     };
-    const response = await isAuthorized(data);
+    const response = await isAuthorized(context);
     expect(response).toBe(true);
   });
 
   it('Should be auth equal to false without authorization headers', async () => {
-    const data = {
-      context: {
-        isAuth: true,
-        roles: ['USERS'],
-        operation: 'deleteRole',
-      },
+    const context = {
+      isAuth: true,
+      roles: ['USERS'],
+      operation: 'deleteRole',
     };
     mockingoose(Role).toReturn(
       [
@@ -87,18 +79,16 @@ describe('Test Authorization middleware', () => {
       ],
       'find',
     );
-    const response = isAuthorized(data);
+    const response = isAuthorized(context);
     await expect(response).rejects.toThrow(Error);
     await expect(response).rejects.toThrow('Unauthorized!');
   });
 
   it('Should be auth equal to false without authorization headers', async () => {
-    const data = {
-      context: {
-        isAuth: true,
-        roles: ['USERS'],
-        operation: 'deleteRole',
-      },
+    const context = {
+      isAuth: true,
+      roles: ['USERS'],
+      operation: 'deleteRole',
     };
     mockingoose(Role).toReturn(
       [
@@ -133,18 +123,16 @@ describe('Test Authorization middleware', () => {
       ],
       'find',
     );
-    const response = isAuthorized(data);
+    const response = isAuthorized(context);
     await expect(response).rejects.toThrow(Error);
     await expect(response).rejects.toThrow('Unauthorized!');
   });
 
   it('Should be auth equal to false without authorization headers', async () => {
-    const data = {
-      context: {
-        isAuth: true,
-        roles: ['USERS'],
-        operation: 'deleteRole',
-      },
+    const context = {
+      isAuth: true,
+      roles: ['USERS'],
+      operation: 'deleteRole',
     };
     mockingoose(Role).toReturn(
       [
@@ -156,32 +144,28 @@ describe('Test Authorization middleware', () => {
       ],
       'find',
     );
-    const response = isAuthorized(data);
+    const response = isAuthorized(context);
     await expect(response).rejects.toThrow(Error);
     await expect(response).rejects.toThrow('Unauthorized!');
   });
 
   it('Should be auth equal to false without authorization headers', async () => {
-    const data = {
-      context: {
-        isAuth: true,
-        roles: ['USERS'],
-        operation: 'deleteRole',
-      },
+    const context = {
+      isAuth: true,
+      roles: ['USERS'],
+      operation: 'deleteRole',
     };
     mockingoose(Role).toReturn([], 'find');
-    const response = isAuthorized(data);
+    const response = isAuthorized(context);
     await expect(response).rejects.toThrow(Error);
     await expect(response).rejects.toThrow('Unauthorized!');
   });
 
   it('Should be auth equal to false without authorization headers', async () => {
-    const data = {
-      context: {
-        isAuth: true,
-        roles: ['SUPER ADMIN'],
-        operation: 'users',
-      },
+    const context = {
+      isAuth: true,
+      roles: ['SUPER ADMIN'],
+      operation: 'users',
     };
     mockingoose(Role).toReturn(
       [
@@ -198,7 +182,7 @@ describe('Test Authorization middleware', () => {
       ],
       'find',
     );
-    const response = await isAuthorized(data);
+    const response = await isAuthorized(context);
     expect(response).toBe(true);
   });
 });
