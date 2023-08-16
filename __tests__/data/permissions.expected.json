@@ -1,0 +1,65 @@
+[
+  {
+    "id": "6466bc0aa1ca2e6dca0597bf",
+    "name": "*",
+    "description": "All",
+    "createdAt": "2023-07-29T00:00:13.000Z",
+    "updatedAt": "2023-07-29T00:00:13.000Z"
+  },
+  {
+    "id": "6466bc0aa1ca2e6dca0597bb",
+    "name": "users",
+    "description": "users list",
+    "createdAt": "2023-07-29T00:00:13.000Z",
+    "updatedAt": "2023-07-29T00:00:13.000Z"
+  },
+  {
+    "id": "6462bc0aa1ca2e6dca0597cb",
+    "name": "user",
+    "description": "read a user",
+    "createdAt": "2023-07-29T00:00:13.000Z",
+    "updatedAt": "2023-07-29T00:00:13.000Z"
+  },
+  {
+    "id": "6466bc0aa1ca2e6dca0394cb",
+    "name": "addUser",
+    "description": "add a user",
+    "createdAt": "2023-07-29T00:00:13.000Z",
+    "updatedAt": "2023-07-29T00:00:13.000Z"
+  },
+  {
+    "id": "6466bc0aa1ca2e6dca1294cb",
+    "name": "updateUser",
+    "description": "update a User",
+    "createdAt": "2023-07-29T00:00:13.000Z",
+    "updatedAt": "2023-07-29T00:00:13.000Z"
+  },
+  {
+    "id": "6466bc0aa1ca2e6dca1594cb",
+    "name": "deleteUser",
+    "description": "delete a User",
+    "createdAt": "2023-07-29T00:00:13.000Z",
+    "updatedAt": "2023-07-29T00:00:13.000Z"
+  },
+  {
+    "id": "6466bc0aa1ca2e5dca1294cb",
+    "name": "permissions",
+    "description": "permission list",
+    "createdAt": "2023-07-29T00:00:13.000Z",
+    "updatedAt": "2023-07-29T00:00:13.000Z"
+  },
+  {
+    "id": "6466bc0aa1ca2e5dca5294cb",
+    "name": "delete",
+    "description": "delete",
+    "createdAt": "2023-07-29T00:00:13.000Z",
+    "updatedAt": "2023-07-29T00:00:13.000Z"
+  },
+  {
+    "id": "6466bc0aa1ca2e5dca4294cb",
+    "name": "delete test",
+    "description": "delete test",
+    "createdAt": "2023-07-29T00:00:13.000Z",
+    "updatedAt": "2023-07-29T00:00:13.000Z"
+  }
+]
