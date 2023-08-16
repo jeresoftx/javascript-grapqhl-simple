@@ -1,7 +1,7 @@
 const { isAuthorized } = require('../../../middleware/isAuthorized');
 const Role = require('../../../models/role');
 
-const updateRole = async (parent, data, context) => {
+const editRole = async (parent, data, context) => {
   isAuthorized(context);
   const { id, name, description } = data;
   const role = await Role.findOne({ _id: id });
@@ -16,4 +16,4 @@ const updateRole = async (parent, data, context) => {
   return role;
 };
 
-module.exports = { updateRole };
+module.exports = { editRole };

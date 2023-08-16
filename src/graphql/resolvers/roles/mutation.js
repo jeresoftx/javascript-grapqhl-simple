@@ -1,12 +1,12 @@
 const { addRole } = require('./addRole');
-const { updateRole } = require('./updateRole');
+const { editRole } = require('./editRole');
 const { deleteRole } = require('./deleteRole');
 const { addPermissionToRole } = require('./addPermissionToRole');
 const { removePermissionToRole } = require('./removePermissionToRole');
 
 module.exports = {
   addRole,
-  updateRole,
+  editRole,
   deleteRole,
   addPermissionToRole,
   removePermissionToRole,
