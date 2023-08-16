@@ -42,7 +42,6 @@ describe('Login user unit test', () => {
       },
       { userAgent: 'jest' },
     );
-    console.log(response);
     expect(response).toEqual(expect.any(String));
   });
 });
