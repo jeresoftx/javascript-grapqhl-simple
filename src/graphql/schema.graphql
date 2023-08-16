@@ -36,7 +36,7 @@ type Permission {
   name: String!
   description: String
   createdAt: DateTime!
-  updateAt: DateTime!
+  updatedAt: DateTime!
 }
 
 "Permission object"
