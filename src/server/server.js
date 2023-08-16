@@ -54,12 +54,22 @@ const sartServer = async ({ url }) => {
     logger.info(`${pjson.name} - ${pjson.version}`);
     logger.info('🚀 Server ready at');
     logger.info(`http://${process.env.HOSTNAME}:${process.env.GRAPHQL_PORT}/`);
+    proxy.close();
   });
-  return true;
+  return proxy;
 };
 
 const closeExpressServer = async () => {
   await disconnectDB();
 };
 
-module.exports = { expressServer, closeExpressServer, sartServer };
+const stopServer = async () => {
+  await disconnectDB();
+};
+
+module.exports = {
+  expressServer,
+  closeExpressServer,
+  sartServer,
+  stopServer,
+};

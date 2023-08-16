@@ -58,7 +58,6 @@
   "scripts": {
     "start": "nodemon -e js,graphql src/index.js",
     "prepare": "husky install",
-    "lint-staged": "lint-staged",
     "test": "NODE_ENV=test jest",
     "integration": "NODE_ENV=test jest __tests__/integration",
     "start:stack": "docker build -t mongodb ./docker/ && docker-compose --env-file .env -f ./docker/docker-compose.yml up -d"

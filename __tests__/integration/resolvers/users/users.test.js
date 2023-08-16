@@ -39,6 +39,6 @@ describe('User list integration test', () => {
     expect(response.body.data.users).toMatchObject([
       { fullName: 'Joel Alvarez Mexia' },
     ]);
-    await closeExpressServer();
+    await closeExpressServer(app);
   });
 });
