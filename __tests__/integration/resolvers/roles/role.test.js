@@ -36,7 +36,6 @@ describe('Read role integration test', () => {
       });
 
     expect(response.errors).toBeUndefined();
-    console.log(response.body);
     expect(response.body.data.role.name).toBe('SUPER ADMIN');
     await closeExpressServer();
   });
