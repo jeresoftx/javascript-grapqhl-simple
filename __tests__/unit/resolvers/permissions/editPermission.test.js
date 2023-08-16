@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 const {
-  updatePermission,
-} = require('../../../../src/graphql/resolvers/permissions/updatePermission');
+  editPermission,
+} = require('../../../../src/graphql/resolvers/permissions/editPermission');
 const { isAuthorized } = require('../../../../src/middleware/isAuthorized');
 
 jest.mock('../../../../src/middleware/isAuthorized');
@@ -17,23 +17,23 @@ describe('Update a permission unit test', () => {
     });
     const permission = {
       id: '6466bc0aa1ca2e6dca0597bb',
-      name: 'permission update',
-      decription: 'permission update',
+      name: 'permission edit',
+      decription: 'permission edit',
     };
-    const response = updatePermission(null, permission);
+    const response = editPermission(null, permission);
     await expect(response).rejects.toThrow(Error);
     await expect(response).rejects.toThrow('Unauthorized!');
   });
 
-  it('returns a permission data if the permission was updated', async () => {
+  it('returns a permission data if the permission was editd', async () => {
     isAuthorized.mockReturnValue(true);
     const permission = {
       id: '6466bc0aa1ca2e6dca0597bb',
-      name: 'permission update',
-      decription: 'permission update',
+      name: 'permission edit',
+      decription: 'permission edit',
     };
-    const response = await updatePermission(null, permission);
-    const expectedData = 'permission update';
+    const response = await editPermission(null, permission);
+    const expectedData = 'permission edit';
 
     expect(response.name).toBe(expectedData);
   });
@@ -42,10 +42,10 @@ describe('Update a permission unit test', () => {
     isAuthorized.mockReturnValue(true);
     const permission = {
       id: '1166bc0aa1ca2e6dca0597cf',
-      name: 'permission update',
-      decription: 'permission update',
+      name: 'permission edit',
+      decription: 'permission edit',
     };
-    const response = await updatePermission(null, permission);
+    const response = await editPermission(null, permission);
     expect(response).toBeNull();
   });
 });
