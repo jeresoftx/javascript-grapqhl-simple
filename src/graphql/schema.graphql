@@ -73,8 +73,8 @@ input PhoneInput {
 }
 
 input PermissionInput {
-  _id: ID!
-  name: NonEmptyString!
+  id: ID!
+  permission: NonEmptyString!
 }
 
 type Query {
@@ -140,7 +140,7 @@ type Mutation {
   addRole(
     name: NonEmptyString!
     description: NonEmptyString!
-    permission: PermissionInput!
+    permissions: [PermissionInput]
   ): Role!
 
   "Update a new role"

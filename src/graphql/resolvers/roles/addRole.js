@@ -3,6 +3,7 @@ const Role = require('../../../models/role');
 
 const addRole = async (parent, data, context) => {
   isAuthorized(context);
+  console.log(data);
   const role = new Role(data);
   await role.save();
   return role;
