@@ -2,56 +2,45 @@
 const request = require('supertest');
 
 const Role = require('../../../../src/models/role');
+const rolesData = require('../../../data/roles.json');
 const {
   expressServer,
   closeExpressServer,
 } = require('../../../../src/server/server');
-const { mutationAddRole } = require('./features/mutation/mutation.addRole');
+const {
+  mutationDeleteRole,
+} = require('./features/mutation/mutation.deleteRole');
 const { isAuthorized } = require('../../../../src/middleware/isAuthorized');
 
 jest.mock('../../../../src/middleware/isAuthorized');
 
-describe('Add role unit test', () => {
+describe('Delete role unit test', () => {
   let app;
 
   beforeAll(async () => {
     app = await expressServer({});
   });
+
   beforeEach(() => {
     isAuthorized.mockClear();
   });
 
-  it('Can Add a new role', async () => {
+  it('Can delete a new role', async () => {
     isAuthorized.mockReturnValue(true);
     await Role.deleteMany({});
+    await Role.insertMany(rolesData);
     const response = await request(app)
       .post('/')
       .set('content-type', 'application/json')
       .set('uer-agent', 'jest')
       .send({
-        query: mutationAddRole,
+        query: mutationDeleteRole,
         variables: {
-          name: 'test 1',
-          description: 'test role 1',
-          permissions: [
-            { id: '6466bc0aa1ca2e6dca0597bb', permission: 'users' },
-            { id: '1466bc0aa1ca2e6dca0597cb', permission: 'user' },
-          ],
+          id: '6466bc0ba1ca2e6dca1297cb',
         },
       });
-    const expectData = {
-      id: expect.any(String),
-      name: 'test 1',
-      description: 'test role 1',
-      permissions: [
-        { id: '6466bc0aa1ca2e6dca0597bb', permission: 'users' },
-        { id: '1466bc0aa1ca2e6dca0597cb', permission: 'user' },
-      ],
-      createdAt: expect.any(String),
-      updatedAt: expect.any(String),
-    };
     await expect(response.errors).toBeUndefined();
-    await expect(response.body.data.addRole).toMatchObject(expectData);
+    await expect(response.body.data.deleteRole).toEqual(true);
     await closeExpressServer();
   });
 });
