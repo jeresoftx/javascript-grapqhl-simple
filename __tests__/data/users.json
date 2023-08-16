@@ -22,7 +22,7 @@
       }
     ],
     "roles": ["superAdmin"],
-    "password": "$2b$10$RzC8NKC0jyd9VZ.4Ys.IiuGAvJtgkSIjRwFNXA7yy1SV4Uqi1mZe2",
+    "password": "$2b$10$lTTgJiRRgPJytH5iwzH5Ou2XcWKVN2fFKtIm4A8XDxEjFUeatEY/e",
     "createdAt": "2023-07-29T00:00:13.000Z",
     "updatedAt": "2023-07-29T00:00:13.000Z",
     "lastConnected": "2023-07-29T00:00:13.000Z"
