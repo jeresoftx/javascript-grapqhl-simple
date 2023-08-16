@@ -42,7 +42,7 @@ type Permission {
 "Permission object"
 type PermissionEmbeded {
   id: ID!
-  name: String!
+  permission: String!
 }
 
 "Role object"
@@ -52,7 +52,7 @@ type Role {
   description: String
   permissions: [PermissionEmbeded!]
   createdAt: DateTime!
-  updateAt: DateTime!
+  updatedAt: DateTime!
 }
 
 input ParamsInput {
@@ -95,6 +95,12 @@ type Query {
 
   "Read one permission"
   permission(id: ID!): Permission
+
+  "Role lists"
+  roles(params: ParamsInput!): [Role!]!
+
+  "Read one role"
+  role(id: ID!): Role
 }
 
 type Mutation {

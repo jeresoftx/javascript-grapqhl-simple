@@ -1,0 +1,32 @@
+[
+  {
+    "id": "6466bc0aa1ca2e6dca1197bb",
+    "name": "SUPER ADMIN",
+    "description": "All",
+    "permissions": [{ "id": "6466bc0aa1ca2e2dca0597bf", "permission": "*" }],
+    "createdAt": "2023-07-29T00:00:13.000Z",
+    "updatedAt": "2023-07-29T00:00:13.000Z"
+  },
+  {
+    "id": "6466bc0aa1ca2e6dca1297cb",
+    "name": "USERS",
+    "permissions": [
+      { "id": "6466bc0aa1ca2e6dca0597bb", "permission": "users" },
+      { "id": "1466bc0aa1ca2e6dca0597cb", "permission": "user" },
+      { "id": "6466bc0aa1ca2e6dca0394cb", "permission": "addUser" },
+      { "id": "6466bc0aa1ca2e6dca1294cb", "permission": "updateUser" },
+      { "id": "6466bc0aa1ca2e6dca1594cb", "permission": "deleteUser" }
+    ],
+    "description": "Browser, Read, Edit, Add and Delete for Users",
+    "createdAt": "2023-07-29T00:00:13.000Z",
+    "updatedAt": "2023-07-29T00:00:13.000Z"
+  },
+  {
+    "id": "6466bc0ba1ca2e6dca1297cb",
+    "name": "DELETE",
+    "permissions": [],
+    "description": "Browser, Read, Edit, Add and Delete for Users",
+    "createdAt": "2023-07-29T00:00:13.000Z",
+    "updatedAt": "2023-07-29T00:00:13.000Z"
+  }
+]
