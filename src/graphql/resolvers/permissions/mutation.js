@@ -1,9 +1,9 @@
 const { addPermission } = require('./addPermission');
-const { updatePermission } = require('./updatePermission');
+const { editPermission } = require('./editPermission');
 const { deletePermission } = require('./deletePermission');
 
 module.exports = {
   addPermission,
-  updatePermission,
+  editPermission,
   deletePermission,
 };

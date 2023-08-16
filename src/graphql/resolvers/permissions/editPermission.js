@@ -1,7 +1,7 @@
 const { isAuthorized } = require('../../../middleware/isAuthorized');
 const Permission = require('../../../models/permission');
 
-const updatePermission = async (parent, data, context) => {
+const editPermission = async (parent, data, context) => {
   isAuthorized(context);
   const { id, name, description } = data;
   const permission = await Permission.findOne({ _id: id });
@@ -16,4 +16,4 @@ const updatePermission = async (parent, data, context) => {
   return permission;
 };
 
-module.exports = { updatePermission };
+module.exports = { editPermission };

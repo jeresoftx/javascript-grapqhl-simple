@@ -121,7 +121,8 @@ type Mutation {
   ): Permission!
 
   "Update a new permission"
-  updatePermission(
+  editPermission(
+    id: ID!
     name: NonEmptyString!
     description: NonEmptyString!
   ): Permission

@@ -1,18 +1,20 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const request = require('supertest');
 
-const User = require('../../../../src/models/user');
-const usersData = require('../../../data/users.json');
+const Permission = require('../../../../src/models/permission');
+const permissionsData = require('../../../data/permissions.json');
 const {
   expressServer,
   closeExpressServer,
 } = require('../../../../src/server/server');
-const { mutationEditUser } = require('./features/mutation/mutation.editUser');
+const {
+  mutationEditPermission,
+} = require('./features/mutation/mutation.editPermission');
 const { isAuthorized } = require('../../../../src/middleware/isAuthorized');
 
 jest.mock('../../../../src/middleware/isAuthorized');
 
-describe('Edit user unit test', () => {
+describe('Edit permission unit test', () => {
   let app;
 
   beforeAll(async () => {
@@ -23,30 +25,31 @@ describe('Edit user unit test', () => {
     isAuthorized.mockClear();
   });
 
-  it('Can edit a new user', async () => {
+  it('Can edit a new permission', async () => {
     isAuthorized.mockReturnValue(true);
-    await User.deleteMany({});
-    await User.insertMany(usersData);
+    await Permission.deleteMany({});
+    await Permission.insertMany(permissionsData);
     const response = await request(app)
       .post('/')
       .set('content-type', 'application/json')
       .set('uer-agent', 'jest')
       .send({
-        query: mutationEditUser,
+        query: mutationEditPermission,
         variables: {
-          id: '6466bc0aa1ca2e6dca0597cb',
-          name: 'Benjamin',
-          lastName: 'Alvarez',
+          id: '6466bc0aa1ca2e5dca4294cb',
+          name: 'test 1',
+          description: 'test permission 1',
         },
       });
     const expectData = {
-      id: '6466bc0aa1ca2e6dca0597cb',
-      name: 'Benjamin',
-      lastName: 'Alvarez',
-      fullName: 'Benjamin Alvarez',
+      id: '6466bc0aa1ca2e5dca4294cb',
+      name: 'test 1',
+      description: 'test permission 1',
+      createdAt: expect.any(String),
+      updatedAt: expect.any(String),
     };
     await expect(response.errors).toBeUndefined();
-    await expect(response.body?.data?.editUser).toMatchObject(expectData);
+    await expect(response.body.data.editPermission).toMatchObject(expectData);
     await closeExpressServer();
   });
 });
