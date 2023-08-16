@@ -7,12 +7,12 @@ const {
   expressServer,
   closeExpressServer,
 } = require('../../../../src/server/server');
-const { queryRole } = require('./features/query/query.role');
+const { mutationEditRole } = require('./features/mutation/mutation.editRole');
 const { isAuthorized } = require('../../../../src/middleware/isAuthorized');
 
 jest.mock('../../../../src/middleware/isAuthorized');
 
-describe('Read role integration test', () => {
+describe('Edit role unit test', () => {
   let app;
 
   beforeAll(async () => {
@@ -23,20 +23,32 @@ describe('Read role integration test', () => {
     isAuthorized.mockClear();
   });
 
-  it('Read a Role', async () => {
+  it('Can edit a new role', async () => {
     isAuthorized.mockReturnValue(true);
+    await Role.deleteMany({});
     await Role.insertMany(rolesData);
     const response = await request(app)
       .post('/')
       .set('content-type', 'application/json')
       .set('uer-agent', 'jest')
       .send({
-        query: queryRole,
-        variables: { id: '6466bc0aa1ca2e6dca1197bb' },
+        query: mutationEditRole,
+        variables: {
+          id: '6466bc0ba1ca2e6dca1297cb',
+          name: 'test 1',
+          description: 'test role 1',
+        },
       });
-
-    expect(response.errors).toBeUndefined();
-    expect(response.body.data.role.name).toBe('SUPER ADMIN');
+    const expectData = {
+      id: '6466bc0ba1ca2e6dca1297cb',
+      name: 'test 1',
+      description: 'test role 1',
+      permissions: [],
+      createdAt: expect.any(String),
+      updatedAt: expect.any(String),
+    };
+    await expect(response.errors).toBeUndefined();
+    await expect(response.body.data.editRole).toMatchObject(expectData);
     await closeExpressServer();
   });
 });
