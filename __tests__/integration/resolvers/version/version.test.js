@@ -4,14 +4,13 @@ const request = require('supertest');
 const {
   expressServer,
   closeExpressServer,
-} = require('../../../../src/server/expressServer');
+} = require('../../../../src/server/server');
 
 describe('Version test', () => {
   let app;
 
   beforeAll(async () => {
-    const express = await expressServer({});
-    app = express.app;
+    app = await expressServer({});
   });
 
   afterAll(async () => {

@@ -42,6 +42,7 @@ describe('Login user unit test', () => {
       },
       { userAgent: 'jest' },
     );
-    expect(response).not.toBeUndefined();
+    console.log(response);
+    expect(response).toEqual(expect.any(String));
   });
 });

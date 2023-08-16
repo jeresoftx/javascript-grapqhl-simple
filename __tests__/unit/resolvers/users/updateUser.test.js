@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 const {
-  updateUser,
-} = require('../../../../src/graphql/resolvers/users/updateUser');
+  editUser,
+} = require('../../../../src/graphql/resolvers/users/editUser');
 const { isAuthorized } = require('../../../../src/middleware/isAuthorized');
 
 jest.mock('../../../../src/middleware/isAuthorized');
@@ -20,7 +20,7 @@ describe('Update a user unit test', () => {
       name: 'Ernesto',
       lastName: 'Gomez',
     };
-    const response = updateUser(null, user);
+    const response = editUser(null, user);
     await expect(response).rejects.toThrow(Error);
     await expect(response).rejects.toThrow('Unauthorized!');
   });
@@ -32,7 +32,7 @@ describe('Update a user unit test', () => {
       name: 'Ernesto',
       lastName: 'Gomez',
     };
-    const response = await updateUser(null, user);
+    const response = await editUser(null, user);
 
     expect(response.fullName).toBe('Ernesto Gomez');
   });
@@ -44,7 +44,7 @@ describe('Update a user unit test', () => {
       name: 'Ernesto',
       lastName: 'Gomez',
     };
-    const response = await updateUser(null, user);
+    const response = await editUser(null, user);
     expect(response).toBeNull();
   });
 });

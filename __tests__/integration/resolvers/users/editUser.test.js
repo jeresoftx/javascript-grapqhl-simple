@@ -7,12 +7,12 @@ const {
   expressServer,
   closeExpressServer,
 } = require('../../../../src/server/server');
-const { queryUser } = require('./features/query/query.user');
+const { mutationEditUser } = require('./features/mutation/mutation.editUser');
 const { isAuthorized } = require('../../../../src/middleware/isAuthorized');
 
 jest.mock('../../../../src/middleware/isAuthorized');
 
-describe('Read user integration test', () => {
+describe('Add user unit test', () => {
   let app;
 
   beforeAll(async () => {
@@ -23,20 +23,30 @@ describe('Read user integration test', () => {
     isAuthorized.mockClear();
   });
 
-  it('Read a User', async () => {
+  it('Can Add a new user', async () => {
     isAuthorized.mockReturnValue(true);
+    await User.deleteMany({});
     await User.insertMany(usersData);
     const response = await request(app)
       .post('/')
       .set('content-type', 'application/json')
       .set('uer-agent', 'jest')
       .send({
-        query: queryUser,
-        variables: { id: '6466bc0aa1ca2e6dca0597cb' },
+        query: mutationEditUser,
+        variables: {
+          id: '6466bc0aa1ca2e6dca0597cb',
+          name: 'Benjamin',
+          lastName: 'Alvarez',
+        },
       });
-
-    expect(response.errors).toBeUndefined();
-    expect(response.body?.data?.user?.fullName).toBe('Joel Alvarez Mexia');
+    const expectData = {
+      id: '6466bc0aa1ca2e6dca0597cb',
+      name: 'Benjamin',
+      lastName: 'Alvarez',
+      fullName: 'Benjamin Alvarez',
+    };
+    await expect(response.errors).toBeUndefined();
+    await expect(response.body?.data?.editUser).toMatchObject(expectData);
     await closeExpressServer();
   });
 });
