@@ -9,6 +9,10 @@ on:
   pull_request:
     branches: ['main']
 
+permissions:
+  checks: write
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -26,20 +30,40 @@ jobs:
           cache: 'npm'
       - name: npm install
         run: npm ci
+      - name: Create mongo Docker container
+        uses: DigiPie/mongo-action@v2.0.1
+        with:
+          image_version: latest
+          port: 27017
+      - name: Install mongosh command
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wget gnupg
+          wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -
+          echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
+          sudo apt-get update
+          sudo apt-get install -y mongodb-mongosh
+      - name: Test mongo connection
+        run: 'sudo mongosh localhost:27017'
       - name: create env file
         run: |
           touch .env
-          echo GRAPHQL_PORT=${{ vars.GRAPHQL_PORT }} >> .env
-          echo HOSTNAME=${{ vars.HOSTNAME }} >> .env
-          echo MONGO_URL_CLIENT=${{ vars.MONGO_URL_CLIENT }} >> .env
-          echo DB_NAME=${{ vars.DB_NAME }} >> .env
-          echo DB_USERNAME=${{ vars.DB_USERNAME }} >> .env
-          echo DB_HOST=${{ vars.DB_HOST }} >> .env
-          echo DB_PASSWORD=${{ vars.DB_PASSWORD }} >> .env
-          echo DB_PORT=${{ vars.DB_PORT }} >> .env
-          echo PORT=${{ vars.PORT }} >> .env
-          echo JWTSECRET=${{ secrets.JWTSECRET }} >> .env
-          echo JWTKEY=${{ secrets.JWTKEY }} >> .env
+          echo GRAPHQL_PORT=$GRAPHQL_PORT >> .env
+          echo HOSTNAME=$HOSTNAME >> .env d
+          echo DB_NAME=$DB_NAME >> .env
+          echo DB_HOST=$DB_HOST >> .env
+          echo DB_PORT=$DB_PORT >> .env
+          echo PORT=$PORT >> .env
+          echo JWTSECRET=$JWTSECRET >> .env
+          echo JWTKEY=$JWTKEY >> .env
+        env:
+          GRAPHQL_PORT: ${{ vars.GRAPHQL_PORT }}
+          DB_NAME: ${{ vars.DB_NAME }}
+          DB_HOST: ${{ vars.DB_HOST }}
+          DB_PORT: ${{ vars.DB_PORT }}
+          PORT: ${{ vars.PORT }}
+          JWTSECRET: ${{ secrets.JWTSECRET }}
+          JWTKEY: ${{ secrets.JWTKEY }}
       - name: Run linters
         uses: wearerequired/lint-action@v2
         with:
