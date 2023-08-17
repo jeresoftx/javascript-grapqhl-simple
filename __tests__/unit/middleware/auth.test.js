@@ -4,7 +4,7 @@
 const mockingoose = require('mockingoose');
 const jwt = require('jsonwebtoken');
 
-const { auth } = require('../../../src/middleware/authorization');
+const { auth } = require('../../../src/middleware/auth');
 const { mockRequest, mockResponse } = require('./__mocks__/Request.mock');
 
 const Token = require('../../../src/models/token');
@@ -13,7 +13,7 @@ const User = require('../../../src/models/user');
 describe('Test Authorization middleware', () => {
   beforeEach(() => {});
 
-  it('Should be auth equal to false without authorization headers', async () => {
+  it('Should be auth equal to false without auth headers', async () => {
     const req = mockRequest({});
     const res = mockResponse({});
     await auth(req, res, () => {});
@@ -111,9 +111,10 @@ describe('Test Authorization middleware', () => {
       }),
     );
     await auth(req, res, () => {});
-    await expect(res.context.isAuth).toBe(true);
-    await expect(res.context.user.id).toBe('6466bc0aa1ca2e6dca0597cb');
-    await expect(res.context.user.roles).toMatchObject(['*']);
+    console.log('res.context test', res.context);
+    expect(res.context.isAuth).toBe(true);
+    expect(res.context.user.id).toBe('6466bc0aa1ca2e6dca0597cb');
+    expect(res.context.user.roles).toMatchObject(['*']);
   });
 
   it('should return auth false (the token is wrong encode)', async () => {

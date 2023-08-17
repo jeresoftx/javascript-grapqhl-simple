@@ -25,7 +25,7 @@ describe('Read user integration test', () => {
 
   it('Read a User', async () => {
     isAuthorized.mockReturnValue(true);
-    await User.insertMany(usersData).exec();
+    await User.insertMany(usersData);
     const response = await request(app)
       .post('/')
       .set('content-type', 'application/json')

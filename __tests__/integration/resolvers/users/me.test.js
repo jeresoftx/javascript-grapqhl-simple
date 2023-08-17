@@ -19,9 +19,9 @@ describe('Me unit test', () => {
   });
 
   it('Use me', async () => {
-    await User.deleteMany({});
+    await User.deleteMany({}).exec();
     await User.insertMany(usersData);
-    await Token.deleteMany({});
+    await Token.deleteMany({}).exec();
     await Token.insertMany(tokensData);
     const response = await request(app)
       .post('/')
@@ -35,7 +35,7 @@ describe('Me unit test', () => {
         query: queryMe,
       });
     await expect(response.errors).toBeUndefined();
-    await expect(response.body.data.me.fullName).toBe('Joel Alvarez Mexia');
+    await expect(response.body?.data?.me?.fullName).toBe('Joel Alvarez Mexia');
     await closeExpressServer();
   });
 });
