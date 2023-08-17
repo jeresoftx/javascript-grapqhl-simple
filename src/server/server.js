@@ -27,7 +27,6 @@ const expressServer = async ({ url }) => {
   const apollo = new ApolloServer({
     typeDefs: [scalarTypeDefs, myTypeDefs],
     resolvers,
-    introspection: true,
     context: ({ req, res }) => {
       const obj = gql`
         ${req.body.query}
