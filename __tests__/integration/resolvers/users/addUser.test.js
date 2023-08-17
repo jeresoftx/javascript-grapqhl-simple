@@ -38,7 +38,7 @@ describe('Add user unit test', () => {
           username: `benAlvarez-${timestamp}`,
           email: 'jeresoft+2@gmail.com',
           phone: '6691210703',
-          password: 'Cochiverde$1',
+          password: process.env.USER_PASSWORD_TEST,
         },
       });
     const expectData = {

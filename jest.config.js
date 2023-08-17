@@ -8,6 +8,7 @@ module.exports = {
     '<rootDir>/jest-unit.config.js',
     '<rootDir>/jest-integration.config.js',
   ],
+  coverageDirectory: '<rootDir>/coverage/',
   collectCoverage: true,
   coverageReporters: ['lcov', 'html'],
   testEnvironment: 'node',
@@ -20,5 +21,5 @@ module.exports = {
       lines: 100,
     },
   },
-  coveragePathIgnorePatterns: ['<rootDir>/__tests__'],
+  collectCoverageFrom: ['src/**/*.js', '!src/server/*.js', '!src/index.js'],
 };

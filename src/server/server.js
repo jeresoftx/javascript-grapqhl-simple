@@ -49,12 +49,17 @@ const expressServer = async ({ url }) => {
 const sartServer = async ({ url }) => {
   const app = await expressServer({ url });
   const proxy = http.createServer(app);
-
-  proxy.listen(process.env.GRAPHQL_PORT, () => {
+  let port = process.env.GRAPHQL_PORT;
+  if (process.env.NODE_ENV === 'test') {
+    port = process.env.GRAPHQL_PORT_DEV;
+  }
+  proxy.listen(port, () => {
     logger.info(`${pjson.name} - ${pjson.version}`);
     logger.info('🚀 Server ready at');
-    logger.info(`http://${process.env.HOSTNAME}:${process.env.GRAPHQL_PORT}/`);
-    proxy.close();
+    logger.info(`http://${process.env.HOSTNAME}:${port}/`);
+    if (process.env.NODE_ENV === 'test') {
+      proxy.close();
+    }
   });
   return proxy;
 };

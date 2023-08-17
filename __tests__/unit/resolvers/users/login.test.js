@@ -15,7 +15,7 @@ describe('Login user unit test', () => {
     await expect(
       login(null, {
         username: 'jeresoft',
-        password: 'cochiverde$1',
+        password: process.env.USER_PASSWORD_DUMMY_TEST,
       }),
     ).rejects.toThrowError('INFO | Login error!');
   });
@@ -25,12 +25,11 @@ describe('Login user unit test', () => {
       null,
       {
         username: 'jeresoft',
-        password: 'Cochiverde$1',
+        password: process.env.USER_PASSWORD_TEST,
         remember: true,
       },
       { userAgent: 'jest' },
     );
-    console.log(response);
     expect(response).not.toBeUndefined();
   });
 
@@ -39,7 +38,7 @@ describe('Login user unit test', () => {
       null,
       {
         username: 'jeresoft',
-        password: 'Cochiverde$1',
+        password: process.env.USER_PASSWORD_TEST,
       },
       { userAgent: 'jest' },
     );

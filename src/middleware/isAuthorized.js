@@ -12,21 +12,17 @@ const isAuthorized = async (context) => {
       active: true,
     });
     let havePermission = false;
-    if (roles.length > 0) {
-      roles.forEach((role) => {
-        if (role.permissions.length > 0) {
-          role.permissions.forEach((permission) => {
-            if (
-              // eslint-disable-next-line operator-linebreak
-              permission.permission === context.operation ||
-              permission.permission === '*'
-            ) {
-              havePermission = true;
-            }
-          });
+    roles.forEach((role) => {
+      role.permissions.forEach((permission) => {
+        if (
+          // eslint-disable-next-line operator-linebreak
+          permission.permission === context.operation ||
+          permission.permission === '*'
+        ) {
+          havePermission = true;
         }
       });
-    }
+    });
     if (!havePermission) {
       throw new Error('Unauthorized!');
     }

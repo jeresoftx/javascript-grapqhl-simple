@@ -1,3 +1,5 @@
+const { config } = require('dotenv');
+
 const { connectDB, disconnectDB } = require('../../src/db/connectDB');
 const User = require('../../src/models/user');
 const usersData = require('../data/users.json');
@@ -5,6 +7,8 @@ const Permission = require('../../src/models/permission');
 const permissionsData = require('../data/permissions.json');
 const Role = require('../../src/models/role');
 const rolesData = require('../data/roles.json');
+
+config();
 
 beforeAll(async () => {
   await connectDB({});

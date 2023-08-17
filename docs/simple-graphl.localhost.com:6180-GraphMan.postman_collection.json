@@ -1,0 +1,578 @@
+{
+	"info": {
+		"name": "simple-graphl.localhost.com:6180-GraphMan",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Queries",
+			"item": [
+				{
+					"name": "version",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query version {\n  version\n}",
+								"variables": "{\n\n}"
+							}
+						},
+						"url": {
+							"raw": "http://simple-graphl.localhost.com:6180/",
+							"protocol": "http",
+							"host": [
+								"simple-graphl",
+								"localhost",
+								"com:6180"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": "retrun the version of the graphql system"
+					},
+					"response": []
+				},
+				{
+					"name": "users",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query users($params: ParamsInput!) {\n  users(params: $params) {\n    __typename\n    id\n    name\n    lastName\n    fullName\n    # emails\n    # phones\n    lastConnected\n    createdAt\n    updateAt\n  }\n}",
+								"variables": "{\n\t\"params\": null\n}"
+							}
+						},
+						"url": {
+							"raw": "http://simple-graphl.localhost.com:6180/",
+							"protocol": "http",
+							"host": [
+								"simple-graphl",
+								"localhost",
+								"com:6180"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": "User lists"
+					},
+					"response": []
+				},
+				{
+					"name": "user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query user($id: ID!) {\n  user(id: $id) {\n    __typename\n    id\n    name\n    lastName\n    fullName\n    # emails\n    # phones\n    lastConnected\n    createdAt\n    updateAt\n  }\n}",
+								"variables": "{\n\t\"id\": \"0\"\n}"
+							}
+						},
+						"url": {
+							"raw": "http://simple-graphl.localhost.com:6180/",
+							"protocol": "http",
+							"host": [
+								"simple-graphl",
+								"localhost",
+								"com:6180"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": "Read one user"
+					},
+					"response": []
+				},
+				{
+					"name": "me",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query me {\n  me {\n    __typename\n    id\n    name\n    lastName\n    fullName\n    # emails\n    # phones\n    lastConnected\n    createdAt\n    updateAt\n  }\n}",
+								"variables": "{\n\n}"
+							}
+						},
+						"url": {
+							"raw": "http://simple-graphl.localhost.com:6180/",
+							"protocol": "http",
+							"host": [
+								"simple-graphl",
+								"localhost",
+								"com:6180"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": "Read my info"
+					},
+					"response": []
+				},
+				{
+					"name": "permissions",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query permissions($params: ParamsInput!) {\n  permissions(params: $params) {\n    __typename\n    id\n    name\n    description\n    createdAt\n    updatedAt\n  }\n}",
+								"variables": "{\n\t\"params\": null\n}"
+							}
+						},
+						"url": {
+							"raw": "http://simple-graphl.localhost.com:6180/",
+							"protocol": "http",
+							"host": [
+								"simple-graphl",
+								"localhost",
+								"com:6180"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": "Permission lists"
+					},
+					"response": []
+				},
+				{
+					"name": "permission",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query permission($id: ID!) {\n  permission(id: $id) {\n    __typename\n    id\n    name\n    description\n    createdAt\n    updatedAt\n  }\n}",
+								"variables": "{\n\t\"id\": \"0\"\n}"
+							}
+						},
+						"url": {
+							"raw": "http://simple-graphl.localhost.com:6180/",
+							"protocol": "http",
+							"host": [
+								"simple-graphl",
+								"localhost",
+								"com:6180"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": "Read one permission"
+					},
+					"response": []
+				},
+				{
+					"name": "roles",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query roles($params: ParamsInput!) {\n  roles(params: $params) {\n    __typename\n    id\n    name\n    description\n    # permissions\n    createdAt\n    updatedAt\n  }\n}",
+								"variables": "{\n\t\"params\": null\n}"
+							}
+						},
+						"url": {
+							"raw": "http://simple-graphl.localhost.com:6180/",
+							"protocol": "http",
+							"host": [
+								"simple-graphl",
+								"localhost",
+								"com:6180"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": "Role lists"
+					},
+					"response": []
+				},
+				{
+					"name": "role",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query role($id: ID!) {\n  role(id: $id) {\n    __typename\n    id\n    name\n    description\n    # permissions\n    createdAt\n    updatedAt\n  }\n}",
+								"variables": "{\n\t\"id\": \"0\"\n}"
+							}
+						},
+						"url": {
+							"raw": "http://simple-graphl.localhost.com:6180/",
+							"protocol": "http",
+							"host": [
+								"simple-graphl",
+								"localhost",
+								"com:6180"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": "Read one role"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Mutations",
+			"item": [
+				{
+					"name": "addUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation addUser($name: NonEmptyString!, $lastName: NonEmptyString!, $username: NonEmptyString!, $email: EmailAddress!, $phone: PhoneNumber!, $password: String!) {\n  addUser(\n    name: $name\n    lastName: $lastName\n    username: $username\n    email: $email\n    phone: $phone\n    password: $password\n  ) {\n    __typename\n    id\n    name\n    lastName\n    fullName\n    # emails\n    # phones\n    lastConnected\n    createdAt\n    updateAt\n  }\n}",
+								"variables": "{\n\t\"name\": null,\n\t\"lastName\": null,\n\t\"username\": null,\n\t\"email\": null,\n\t\"phone\": null,\n\t\"password\": null\n}"
+							}
+						},
+						"url": {
+							"raw": "http://simple-graphl.localhost.com:6180/",
+							"protocol": "http",
+							"host": [
+								"simple-graphl",
+								"localhost",
+								"com:6180"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": "Create a new user"
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation deleteUser($id: ID!) {\n  deleteUser(id: $id)\n}",
+								"variables": "{\n\t\"id\": \"0\"\n}"
+							}
+						},
+						"url": {
+							"raw": "http://simple-graphl.localhost.com:6180/",
+							"protocol": "http",
+							"host": [
+								"simple-graphl",
+								"localhost",
+								"com:6180"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": "Delete a existing user"
+					},
+					"response": []
+				},
+				{
+					"name": "editUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation editUser($id: ID!, $name: NonEmptyString!, $lastName: NonEmptyString!) {\n  editUser(id: $id, name: $name, lastName: $lastName) {\n    __typename\n    id\n    name\n    lastName\n    fullName\n    # emails\n    # phones\n    lastConnected\n    createdAt\n    updateAt\n  }\n}",
+								"variables": "{\n\t\"id\": \"0\",\n\t\"name\": null,\n\t\"lastName\": null\n}"
+							}
+						},
+						"url": {
+							"raw": "http://simple-graphl.localhost.com:6180/",
+							"protocol": "http",
+							"host": [
+								"simple-graphl",
+								"localhost",
+								"com:6180"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": "Update a new user"
+					},
+					"response": []
+				},
+				{
+					"name": "addPermission",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation addPermission($name: NonEmptyString!, $description: NonEmptyString!) {\n  addPermission(name: $name, description: $description) {\n    __typename\n    id\n    name\n    description\n    createdAt\n    updatedAt\n  }\n}",
+								"variables": "{\n\t\"name\": null,\n\t\"description\": null\n}"
+							}
+						},
+						"url": {
+							"raw": "http://simple-graphl.localhost.com:6180/",
+							"protocol": "http",
+							"host": [
+								"simple-graphl",
+								"localhost",
+								"com:6180"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": "Create a new permission"
+					},
+					"response": []
+				},
+				{
+					"name": "editPermission",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation editPermission($id: ID!, $name: NonEmptyString!, $description: NonEmptyString!) {\n  editPermission(id: $id, name: $name, description: $description) {\n    __typename\n    id\n    name\n    description\n    createdAt\n    updatedAt\n  }\n}",
+								"variables": "{\n\t\"id\": \"0\",\n\t\"name\": null,\n\t\"description\": null\n}"
+							}
+						},
+						"url": {
+							"raw": "http://simple-graphl.localhost.com:6180/",
+							"protocol": "http",
+							"host": [
+								"simple-graphl",
+								"localhost",
+								"com:6180"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": "Update a new permission"
+					},
+					"response": []
+				},
+				{
+					"name": "deletePermission",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation deletePermission($id: ID!) {\n  deletePermission(id: $id)\n}",
+								"variables": "{\n\t\"id\": \"0\"\n}"
+							}
+						},
+						"url": {
+							"raw": "http://simple-graphl.localhost.com:6180/",
+							"protocol": "http",
+							"host": [
+								"simple-graphl",
+								"localhost",
+								"com:6180"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": "Delete a existing permission"
+					},
+					"response": []
+				},
+				{
+					"name": "addRole",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation addRole($name: NonEmptyString!, $description: NonEmptyString!, $permissions: [PermissionInput]) {\n  addRole(name: $name, description: $description, permissions: $permissions) {\n    __typename\n    id\n    name\n    description\n    # permissions\n    createdAt\n    updatedAt\n  }\n}",
+								"variables": "{\n\t\"name\": null,\n\t\"description\": null,\n\t\"permissions\": null\n}"
+							}
+						},
+						"url": {
+							"raw": "http://simple-graphl.localhost.com:6180/",
+							"protocol": "http",
+							"host": [
+								"simple-graphl",
+								"localhost",
+								"com:6180"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": "Create a new role"
+					},
+					"response": []
+				},
+				{
+					"name": "editRole",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation editRole($id: ID!, $name: NonEmptyString!, $description: NonEmptyString!) {\n  editRole(id: $id, name: $name, description: $description) {\n    __typename\n    id\n    name\n    description\n    # permissions\n    createdAt\n    updatedAt\n  }\n}",
+								"variables": "{\n\t\"id\": \"0\",\n\t\"name\": null,\n\t\"description\": null\n}"
+							}
+						},
+						"url": {
+							"raw": "http://simple-graphl.localhost.com:6180/",
+							"protocol": "http",
+							"host": [
+								"simple-graphl",
+								"localhost",
+								"com:6180"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": "Update a new role"
+					},
+					"response": []
+				},
+				{
+					"name": "deleteRole",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation deleteRole($id: ID!) {\n  deleteRole(id: $id)\n}",
+								"variables": "{\n\t\"id\": \"0\"\n}"
+							}
+						},
+						"url": {
+							"raw": "http://simple-graphl.localhost.com:6180/",
+							"protocol": "http",
+							"host": [
+								"simple-graphl",
+								"localhost",
+								"com:6180"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": "Delete a existing role"
+					},
+					"response": []
+				},
+				{
+					"name": "addPermissionToRole",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation addPermissionToRole($idRole: ID!, $idPermission: ID!) {\n  addPermissionToRole(idRole: $idRole, idPermission: $idPermission)\n}",
+								"variables": "{\n\t\"idRole\": \"0\",\n\t\"idPermission\": \"0\"\n}"
+							}
+						},
+						"url": {
+							"raw": "http://simple-graphl.localhost.com:6180/",
+							"protocol": "http",
+							"host": [
+								"simple-graphl",
+								"localhost",
+								"com:6180"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "removePermissionToRole",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation removePermissionToRole($idRole: ID!, $idPermission: ID!) {\n  removePermissionToRole(idRole: $idRole, idPermission: $idPermission)\n}",
+								"variables": "{\n\t\"idRole\": \"0\",\n\t\"idPermission\": \"0\"\n}"
+							}
+						},
+						"url": {
+							"raw": "http://simple-graphl.localhost.com:6180/",
+							"protocol": "http",
+							"host": [
+								"simple-graphl",
+								"localhost",
+								"com:6180"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation login($username: String!, $password: String!, $remember: Boolean) {\n  login(username: $username, password: $password, remember: $remember)\n}",
+								"variables": "{\n\t\"username\": null,\n\t\"password\": null,\n\t\"remember\": null\n}"
+							}
+						},
+						"url": {
+							"raw": "http://simple-graphl.localhost.com:6180/",
+							"protocol": "http",
+							"host": [
+								"simple-graphl",
+								"localhost",
+								"com:6180"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": null
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
