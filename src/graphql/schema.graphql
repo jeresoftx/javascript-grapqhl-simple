@@ -152,4 +152,5 @@ type Mutation {
   addPermissionToRole(idRole: ID!, idPermission: ID!): Boolean!
   removePermissionToRole(idRole: ID!, idPermission: ID!): Boolean!
   login(username: String!, password: String!, remember: Boolean): String!
+  logout: Boolean!
 }

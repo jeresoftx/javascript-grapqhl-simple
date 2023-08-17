@@ -3,16 +3,18 @@ const request = require('supertest');
 
 const User = require('../../../../src/models/user');
 const usersData = require('../../../data/users.json');
+const Token = require('../../../../src/models/token');
+const tokensData = require('../../../data/tokens.json');
 const {
   expressServer,
   closeExpressServer,
 } = require('../../../../src/server/server');
-const { mutationLogin } = require('./features/mutation/mutation.login');
+const { mutationLogout } = require('./features/mutation/mutation.logout');
 const { isAuthorized } = require('../../../../src/middleware/isAuthorized');
 
 jest.mock('../../../../src/middleware/isAuthorized');
 
-describe('Login user unit test', () => {
+describe('Logout user unit test', () => {
   let app;
 
   beforeAll(async () => {
@@ -22,26 +24,25 @@ describe('Login user unit test', () => {
     isAuthorized.mockClear();
   });
 
-  it('Can login a new user', async () => {
+  it('Can logout a user', async () => {
     isAuthorized.mockReturnValue(true);
     await User.deleteMany({});
     await User.insertMany(usersData);
+    await Token.deleteMany({});
+    await Token.insertMany(tokensData);
     const response = await request(app)
       .post('/')
       .set('content-type', 'application/json')
       .set('user-agent', 'jest')
+      .set(
+        'Authorization',
+        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDY2YmMwYWExY2EyZTZkY2EwNTk3Y2IiLCJ1c2VybmFtZSI6ImplcmVzb2Z0IiwiaWF0IjoxNjkxNzI0NzA0LCJleHAiOjE2OTQzMTY3MDR9.ThnuPMCitWz0eUhowl4VinQrI8p4dmXfxCpSz77Cvok',
+      )
       .send({
-        query: mutationLogin,
-        variables: {
-          username: 'jeresoft',
-          password: process.env.USER_PASSWORD_TEST,
-        },
+        query: mutationLogout,
       });
-    const expectData = {
-      data: { login: expect.any(String) },
-    };
     await expect(response.errors).toBeUndefined();
-    await expect(response.body).toMatchObject(expectData);
+    await expect(response.body.data.logout).toBe(true);
     await closeExpressServer();
   });
 });

@@ -18,7 +18,7 @@ describe('Add user', () => {
       username: 'benAlvarez',
       email: 'jeresoft+2@gmail.com',
       phone: '6691210703',
-      password: 'cochiverde',
+      password: process.env.USER_PASSWORD_DUMMY_TEST,
     };
     const response = addUser(null, user);
     await expect(response).rejects.toThrow(Error);
@@ -33,7 +33,7 @@ describe('Add user', () => {
       username: 'benAlvarez',
       email: 'jeresoft+2@gmail.com',
       phone: '6691210703',
-      password: 'cochiverde',
+      password: process.env.USER_PASSWORD_DUMMY_TEST,
     };
     const response = await addUser(null, user);
 
@@ -69,7 +69,7 @@ describe('Add user', () => {
       username: 'benAlvarez',
       email: 'jeresoft+2@gmail.com',
       phone: '6691210703',
-      password: 'cochiverde',
+      password: process.env.USER_PASSWORD_DUMMY_TEST,
     };
 
     await expect(addUser(null, user)).rejects.toThrowError(
@@ -100,7 +100,7 @@ describe('Add user', () => {
       lastName: 'Alvarez Mexia',
       email: 'jeresoft+2@gmail.com',
       phone: '6691210703',
-      password: 'cochiverde',
+      password: process.env.USER_PASSWORD_DUMMY_TEST,
     };
     await expect(addUser(null, user)).rejects.toThrowError(
       'The username already exists!, try with another one',

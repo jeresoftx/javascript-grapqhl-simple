@@ -46,6 +46,7 @@ jobs:
         run: |
           touch .env
           echo GRAPHQL_PORT=$GRAPHQL_PORT >> .env
+          echo GRAPHQL_PORT_DEV=$GRAPHQL_PORT_DEV >> .env
           echo HOSTNAME=$HOSTNAME >> .env d
           echo DB_NAME=$DB_NAME >> .env
           echo DB_HOST=$DB_HOST >> .env
@@ -53,14 +54,21 @@ jobs:
           echo PORT=$PORT >> .env
           echo JWTSECRET=$JWTSECRET >> .env
           echo JWTKEY=$JWTKEY >> .env
+          echo USER_PASSWORD_TEST=$USER_PASSWORD_TEST >> .env
+          echo USER_PASSWORD_DUMMY_TEST=$USER_PASSWORD_DUMMY_TEST >> .env
+          echo USER_PASSWORD_ENCRYPTED_TEST=$USER_PASSWORD_ENCRYPTED_TEST >> .env
         env:
           GRAPHQL_PORT: ${{ vars.GRAPHQL_PORT }}
+          GRAPHQL_PORT_DEV: ${{ vars.GRAPHQL_PORT_DEV }}
           DB_NAME: ${{ vars.DB_NAME }}
           DB_HOST: ${{ vars.DB_HOST }}
           DB_PORT: ${{ vars.DB_PORT }}
           PORT: ${{ vars.PORT }}
           JWTSECRET: ${{ secrets.JWTSECRET }}
           JWTKEY: ${{ secrets.JWTKEY }}
+          USER_PASSWORD_TEST: ${{ secrets.USER_PASSWORD_TEST }}
+          USER_PASSWORD_DUMMY_TEST: ${{ secrets.USER_PASSWORD_DUMMY_TEST }}
+          USER_PASSWORD_ENCRYPTED_TEST: ${{ secrets.USER_PASSWORD_ENCRYPTED_TEST }}
       - name: Run linters
         uses: wearerequired/lint-action@v2
         with:

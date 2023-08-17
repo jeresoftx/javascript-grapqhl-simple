@@ -4,7 +4,7 @@ const newUser = {
   username: 'benAlvarez',
   email: 'jeresoft+2@gmail.com',
   phone: '6691210703',
-  password: 'cochiverde',
+  password: process.env.USER_PASSWORD_DUMMY_TEST,
 };
 
 module.exports = { newUser };
