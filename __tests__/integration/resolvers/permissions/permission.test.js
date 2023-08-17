@@ -25,7 +25,7 @@ describe('Read permission integration test', () => {
 
   it('Read a Permission', async () => {
     isAuthorized.mockReturnValue(true);
-    await Permission.insertMany(permissionsData);
+    await Permission.insertMany(permissionsData).exec();
     const response = await request(app)
       .post('/')
       .set('content-type', 'application/json')

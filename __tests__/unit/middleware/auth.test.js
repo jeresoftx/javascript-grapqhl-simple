@@ -4,7 +4,7 @@
 const mockingoose = require('mockingoose');
 const jwt = require('jsonwebtoken');
 
-const { auth } = require('../../../src/middleware/auth');
+const { auth } = require('../../../src/middleware/authorization');
 const { mockRequest, mockResponse } = require('./__mocks__/Request.mock');
 
 const Token = require('../../../src/models/token');
@@ -17,7 +17,7 @@ describe('Test Authorization middleware', () => {
     const req = mockRequest({});
     const res = mockResponse({});
     await auth(req, res, () => {});
-    await expect(res.context.isAuth).toBe(false);
+    await expect(res?.context?.isAuth).toBe(false);
   });
 
   it('Should be auth equal to false without token', async () => {
@@ -26,7 +26,7 @@ describe('Test Authorization middleware', () => {
     });
     const res = mockResponse({});
     await auth(req, res, () => {});
-    await expect(res.context.isAuth).toBe(false);
+    await expect(res?.context?.isAuth).toBe(false);
   });
 
   it('Should be auth equal to false without token into the database', async () => {
@@ -36,7 +36,7 @@ describe('Test Authorization middleware', () => {
     });
     const res = mockResponse({});
     await auth(req, res, () => {});
-    await expect(res.context.isAuth).toBe(false);
+    await expect(res?.context?.isAuth).toBe(false);
   });
 
   it('should return auth true type LOGIN', async () => {

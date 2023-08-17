@@ -8,7 +8,7 @@ const removePermissionToRole = async (
   context,
 ) => {
   isAuthorized(context);
-  const role = await Role.findOne({ _id: idRole });
+  const role = await Role.findOne({ _id: idRole }).exec();
   if (!role) {
     throw new Error(`INFO | The role with ${idRole} doesn't exists!`);
   }

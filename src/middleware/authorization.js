@@ -64,7 +64,7 @@ const auth = async (req, res, next) => {
     {
       lastconnected: new Date(),
     },
-  );
+  ).exec();
 
   context.isAuth = true;
   context.token = token;
@@ -73,5 +73,8 @@ const auth = async (req, res, next) => {
   res.context = context;
   return next();
 };
+const authorization = (req, res, next) => {
+  auth(req, res, next)();
+};
 
-module.exports = { auth };
+module.exports = { authorization };
