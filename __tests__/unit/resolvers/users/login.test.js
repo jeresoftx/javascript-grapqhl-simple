@@ -6,7 +6,7 @@ describe('Login user unit test', () => {
     await expect(
       login(null, {
         username: 'fail',
-        password: 'fail',
+        password: process.env.USER_PASSWORD_DUMMY_TEST,
       }),
     ).rejects.toThrowError('INFO | Login error!');
   });
