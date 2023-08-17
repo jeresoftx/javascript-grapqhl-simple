@@ -10,7 +10,7 @@ const isAuthorized = async (context) => {
     const roles = await Role.find({
       name: { $in: context.roles },
       active: true,
-    });
+    }).exec();
     let havePermission = false;
     roles.forEach((role) => {
       role.permissions.forEach((permission) => {

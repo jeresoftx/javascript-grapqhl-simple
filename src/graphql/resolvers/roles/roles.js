@@ -10,7 +10,11 @@ const roles = async (parent, { params }, context) => {
     sort = { fullName: 1 },
   } = params;
 
-  const data = await Role.find(filter).skip(offset).limit(limit).sort(sort);
+  const data = await Role.find(filter)
+    .skip(offset)
+    .limit(limit)
+    .sort(sort)
+    .exec();
 
   return data;
 };

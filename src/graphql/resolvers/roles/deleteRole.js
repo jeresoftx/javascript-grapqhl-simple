@@ -6,7 +6,7 @@ const Role = require('../../../models/role');
 
 const deleteRole = async (parent, { id }, context) => {
   isAuthorized(context);
-  const role = await Role.findOne({ _id: id });
+  const role = await Role.findOne({ _id: id }).exec();
   if (!role) {
     return false;
   }

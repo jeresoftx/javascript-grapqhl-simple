@@ -5,7 +5,7 @@ const User = require('../../../models/user');
 const editUser = async (parent, data, context) => {
   isAuthorized(context);
   const { id, name, lastName } = data;
-  const user = await User.findOne({ _id: id });
+  const user = await User.findOne({ _id: id }).exec();
   if (!user) {
     return null;
   }

@@ -7,7 +7,7 @@ const me = async (parent, data, context) => {
   const user = await User.findOne({
     _id: context.user.id,
     active: true,
-  });
+  }).exec();
 
   if (!user) {
     throw new Error('No Authorize!');

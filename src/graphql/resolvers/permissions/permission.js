@@ -3,7 +3,7 @@ const Permission = require('../../../models/permission');
 
 const permission = async (parent, { id }, context) => {
   isAuthorized(context);
-  const permissionData = await Permission.findOne({ _id: id });
+  const permissionData = await Permission.findOne({ _id: id }).exec();
 
   return permissionData;
 };

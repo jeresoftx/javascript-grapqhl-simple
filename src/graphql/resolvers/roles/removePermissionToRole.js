@@ -12,7 +12,7 @@ const removePermissionToRole = async (
   if (!role) {
     throw new Error(`INFO | The role with ${idRole} doesn't exists!`);
   }
-  const permission = await Permission.findOne({ _id: idPermission });
+  const permission = await Permission.findOne({ _id: idPermission }).exec();
   if (!permission) {
     throw new Error(
       `INFO | The permission with ${idPermission} doesn't exists!`,
