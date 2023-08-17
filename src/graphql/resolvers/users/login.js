@@ -27,19 +27,27 @@ const login = async (parent, data, context) => {
     expiresIn = '30d';
   }
 
-  const token = jwt.sign({ userId: user.id, username }, process.env.JWTSECRET, {
-    expiresIn,
-  });
+  const tokenJWT = jwt.sign(
+    { userId: user.id, username },
+    process.env.JWTSECRET,
+    {
+      expiresIn,
+    },
+  );
 
-  await Token.create({
-    token,
+  const tokenData = {
     expiresIn,
-    type: 'LOGIN',
     userAgent: context.userAgent,
+    type: 'LOGIN',
+    token: tokenJWT,
     userId: user.id,
-  });
+  };
+  const token = new Token(tokenData);
 
-  return token;
+  await token.save();
+
+  console.log('tokenJWT', tokenJWT);
+  return tokenJWT;
 };
 
 module.exports = { login };

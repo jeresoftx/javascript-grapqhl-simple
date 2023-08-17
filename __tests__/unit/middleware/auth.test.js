@@ -13,11 +13,11 @@ const User = require('../../../src/models/user');
 describe('Test Authorization middleware', () => {
   beforeEach(() => {});
 
-  it('Should be auth equal to false without authorization headers', async () => {
+  it('Should be auth equal to false without auth headers', async () => {
     const req = mockRequest({});
     const res = mockResponse({});
     await auth(req, res, () => {});
-    await expect(res.context.isAuth).toBe(false);
+    await expect(res?.context?.isAuth).toBe(false);
   });
 
   it('Should be auth equal to false without token', async () => {
@@ -26,7 +26,7 @@ describe('Test Authorization middleware', () => {
     });
     const res = mockResponse({});
     await auth(req, res, () => {});
-    await expect(res.context.isAuth).toBe(false);
+    await expect(res?.context?.isAuth).toBe(false);
   });
 
   it('Should be auth equal to false without token into the database', async () => {
@@ -36,7 +36,7 @@ describe('Test Authorization middleware', () => {
     });
     const res = mockResponse({});
     await auth(req, res, () => {});
-    await expect(res.context.isAuth).toBe(false);
+    await expect(res?.context?.isAuth).toBe(false);
   });
 
   it('should return auth true type LOGIN', async () => {
@@ -111,9 +111,10 @@ describe('Test Authorization middleware', () => {
       }),
     );
     await auth(req, res, () => {});
-    await expect(res.context.isAuth).toBe(true);
-    await expect(res.context.user.id).toBe('6466bc0aa1ca2e6dca0597cb');
-    await expect(res.context.user.roles).toMatchObject(['*']);
+    console.log('res.context test', res.context);
+    expect(res.context.isAuth).toBe(true);
+    expect(res.context.user.id).toBe('6466bc0aa1ca2e6dca0597cb');
+    expect(res.context.user.roles).toMatchObject(['*']);
   });
 
   it('should return auth false (the token is wrong encode)', async () => {

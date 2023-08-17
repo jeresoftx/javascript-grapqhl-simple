@@ -34,6 +34,7 @@
     "fs": "^0.0.1-security",
     "graphql": "^16.7.1",
     "graphql-scalars": "^1.22.2",
+    "helmet": "^7.0.0",
     "jsonwebtoken": "^9.0.1",
     "mongoose": "^7.4.1",
     "path": "^0.12.7",

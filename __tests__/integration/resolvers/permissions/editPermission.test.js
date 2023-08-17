@@ -27,7 +27,7 @@ describe('Edit permission unit test', () => {
 
   it('Can edit a new permission', async () => {
     isAuthorized.mockReturnValue(true);
-    await Permission.deleteMany({});
+    await Permission.deleteMany({}).exec();
     await Permission.insertMany(permissionsData);
     const response = await request(app)
       .post('/')
@@ -49,7 +49,7 @@ describe('Edit permission unit test', () => {
       updatedAt: expect.any(String),
     };
     await expect(response.errors).toBeUndefined();
-    await expect(response.body.data.editPermission).toMatchObject(expectData);
+    await expect(response.body?.data?.editPermission).toMatchObject(expectData);
     await closeExpressServer();
   });
 });

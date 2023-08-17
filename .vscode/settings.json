@@ -1,3 +1,7 @@
 {
-  "jest.shell": "/bin/zsh"
+  "jest.shell": "/bin/zsh",
+  "sonarlint.connectedMode.project": {
+    "connectionId": "jeresoftx",
+    "projectKey": "jeresoftx_javascript-grapqhl-simple"
+  }
 }

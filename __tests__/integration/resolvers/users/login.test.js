@@ -8,7 +8,6 @@ const {
   closeExpressServer,
 } = require('../../../../src/server/server');
 const { mutationLogin } = require('./features/mutation/mutation.login');
-const { isAuthorized } = require('../../../../src/middleware/isAuthorized');
 
 jest.mock('../../../../src/middleware/isAuthorized');
 
@@ -18,13 +17,9 @@ describe('Login user unit test', () => {
   beforeAll(async () => {
     app = await expressServer({});
   });
-  beforeEach(() => {
-    isAuthorized.mockClear();
-  });
 
   it('Can login a new user', async () => {
-    isAuthorized.mockReturnValue(true);
-    await User.deleteMany({});
+    await User.deleteMany({}).exec();
     await User.insertMany(usersData);
     const response = await request(app)
       .post('/')

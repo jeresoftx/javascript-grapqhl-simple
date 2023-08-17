@@ -1,14 +1,14 @@
 /* eslint-disable import/no-extraneous-dependencies */
-
 const { readFileSync } = require('fs');
 const http = require('http');
+const helmet = require('helmet');
 const { config } = require('dotenv');
 const express = require('express');
 const { ApolloServer, gql } = require('apollo-server-express');
 const { scalarTypeDefs } = require('graphql-scalars');
 
 const resolvers = require('../graphql/resolvers/resolvers');
-const { auth } = require('../middleware/auth');
+const { authorization } = require('../middleware/auth');
 const { connectDB, disconnectDB } = require('../db/connectDB');
 const { logger } = require('../utils/logger');
 const pjson = require('../../package.json');
@@ -18,8 +18,8 @@ config();
 const expressServer = async ({ url }) => {
   await connectDB({ url });
   const app = express();
-
-  app.use(auth);
+  app.use(helmet());
+  app.use(authorization);
   const myTypeDefs = readFileSync(
     __dirname.concat('/../graphql/schema.graphql'),
   ).toString();

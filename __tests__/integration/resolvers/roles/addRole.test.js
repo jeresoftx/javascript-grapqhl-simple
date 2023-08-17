@@ -23,7 +23,7 @@ describe('Add role unit test', () => {
 
   it('Can Add a new role', async () => {
     isAuthorized.mockReturnValue(true);
-    await Role.deleteMany({});
+    await Role.deleteMany({}).exec();
     const response = await request(app)
       .post('/')
       .set('content-type', 'application/json')

@@ -15,6 +15,7 @@ const auth = async (req, res, next) => {
   context.userAgent = req.get('user-agent');
   context.ip = req.headers['x-forwarded-for'];
   res.context = context;
+
   if (!authHeader) {
     return next();
   }
@@ -64,14 +65,21 @@ const auth = async (req, res, next) => {
     {
       lastconnected: new Date(),
     },
-  );
+  ).exec();
 
   context.isAuth = true;
   context.token = token;
   // eslint-disable-next-line no-underscore-dangle
   context.user = { ...user._doc, id: user.id };
   res.context = context;
+
   return next();
 };
 
-module.exports = { auth };
+const authorization = (req, res, next) => {
+  (async () => {
+    await auth(req, res, next);
+  })();
+};
+
+module.exports = { auth, authorization };
