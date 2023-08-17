@@ -1,7 +1,7 @@
 const Token = require('../../../models/token');
 
 const logout = async (parent, data, context) => {
-  if (context && context.isAuth) {
+  if (context?.isAuth) {
     const token = await Token.findOne({
       token: context.token,
       active: true,
