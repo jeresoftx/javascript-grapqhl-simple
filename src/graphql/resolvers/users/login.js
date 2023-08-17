@@ -44,11 +44,7 @@ const login = async (parent, data, context) => {
   };
   const token = new Token(tokenData);
 
-  try {
-    await token.save();
-  } catch (e) {
-    console.log(e);
-  }
+  await token.save();
 
   console.log('tokenJWT', tokenJWT);
   return tokenJWT;
