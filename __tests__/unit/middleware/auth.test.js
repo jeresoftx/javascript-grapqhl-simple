@@ -111,7 +111,6 @@ describe('Test Authorization middleware', () => {
       }),
     );
     await auth(req, res, () => {});
-    console.log('res.context test', res.context);
     expect(res.context.isAuth).toBe(true);
     expect(res.context.user.id).toBe('6466bc0aa1ca2e6dca0597cb');
     expect(res.context.user.roles).toMatchObject(['*']);

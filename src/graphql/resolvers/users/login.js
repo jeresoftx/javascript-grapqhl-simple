@@ -46,7 +46,6 @@ const login = async (parent, data, context) => {
 
   await token.save();
 
-  console.log('tokenJWT', tokenJWT);
   return tokenJWT;
 };
 

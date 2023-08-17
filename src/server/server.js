@@ -6,6 +6,7 @@ const { config } = require('dotenv');
 const express = require('express');
 const { ApolloServer, gql } = require('apollo-server-express');
 const { scalarTypeDefs } = require('graphql-scalars');
+const depthLimit = require('graphql-depth-limit');
 
 const resolvers = require('../graphql/resolvers/resolvers');
 const { authorization } = require('../middleware/auth');
@@ -27,6 +28,8 @@ const expressServer = async ({ url }) => {
   const apollo = new ApolloServer({
     typeDefs: [scalarTypeDefs, myTypeDefs],
     resolvers,
+    validationRules: [depthLimit(7)],
+    introspection: false,
     context: ({ req, res }) => {
       const obj = gql`
         ${req.body.query}
