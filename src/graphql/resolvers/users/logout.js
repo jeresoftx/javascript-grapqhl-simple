@@ -5,7 +5,7 @@ const logout = async (parent, data, context) => {
     const token = await Token.findOne({
       token: context.token,
       active: true,
-    });
+    }).exec();
     if (token) {
       token.active = false;
       await token.save();

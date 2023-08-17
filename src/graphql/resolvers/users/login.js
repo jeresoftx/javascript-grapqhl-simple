@@ -12,7 +12,7 @@ const login = async (parent, data, context) => {
   const user = await User.findOne({
     $or: [{ username }, { email: username }],
     active: true,
-  });
+  }).exec();
   if (!user) {
     throw new Error('INFO | Login error!');
   }

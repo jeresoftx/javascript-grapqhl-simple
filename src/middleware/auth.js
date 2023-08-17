@@ -29,7 +29,7 @@ const auth = async (req, res, next) => {
   const tokenData = await Token.findOne({
     token,
     active: true,
-  });
+  }).exec();
 
   if (!tokenData) {
     return next();
@@ -53,7 +53,7 @@ const auth = async (req, res, next) => {
   const user = await User.findOne({
     _id: decodedToken.userId,
     active: true,
-  });
+  }).exec();
   context.roles = user.roles;
 
   await User.updateOne(

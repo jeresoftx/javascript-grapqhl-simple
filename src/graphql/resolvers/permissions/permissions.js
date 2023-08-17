@@ -13,7 +13,8 @@ const permissions = async (parent, { params }, context) => {
   const data = await Permission.find(filter)
     .skip(offset)
     .limit(limit)
-    .sort(sort);
+    .sort(sort)
+    .exec();
 
   return data;
 };

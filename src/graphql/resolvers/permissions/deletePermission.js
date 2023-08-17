@@ -6,7 +6,7 @@ const Permission = require('../../../models/permission');
 
 const deletePermission = async (parent, { id }, context) => {
   isAuthorized(context);
-  const permission = await Permission.findOne({ _id: id });
+  const permission = await Permission.findOne({ _id: id }).exec();
   if (!permission) {
     return false;
   }

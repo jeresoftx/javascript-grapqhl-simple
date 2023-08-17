@@ -3,7 +3,7 @@ const User = require('../../../models/user');
 
 const user = async (parent, { id }, context) => {
   isAuthorized(context);
-  const userData = await User.findOne({ _id: id });
+  const userData = await User.findOne({ _id: id }).exec();
 
   return userData;
 };

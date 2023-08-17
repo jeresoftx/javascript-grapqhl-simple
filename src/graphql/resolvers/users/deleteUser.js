@@ -6,7 +6,7 @@ const User = require('../../../models/user');
 
 const deleteUser = async (parent, { id }, context) => {
   isAuthorized(context);
-  const user = await User.findOne({ _id: id });
+  const user = await User.findOne({ _id: id }).exec();
   if (!user) {
     return false;
   }
