@@ -67,6 +67,6 @@ This command will start the Node.js application. You should now be able to acces
 
 You have successfully set up and started the application. If you encounter any issues or have any questions, please refer to [github issue site](https://github.com/jeresoftx/javascript-grapqhl-simple/issues)
 
-## CONTRIBUTION
+## CONTRIBUTOR
 
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
