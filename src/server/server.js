@@ -7,14 +7,17 @@ const express = require('express');
 const { ApolloServer, gql } = require('apollo-server-express');
 const { scalarTypeDefs } = require('graphql-scalars');
 const depthLimit = require('graphql-depth-limit');
+const Sentry = require('@sentry/node');
 
 const resolvers = require('../graphql/resolvers/resolvers');
 const { authorization } = require('../middleware/auth');
 const { connectDB, disconnectDB } = require('../db/connectDB');
 const { logger } = require('../utils/logger');
 const pjson = require('../../package.json');
+const { sentryStart } = require('./sentry');
 
 config();
+const release = `${pjson.name} - ${pjson.version}` || 'graphql v0.0.1';
 
 const expressServer = async ({ url }) => {
   await connectDB({ url });
@@ -24,6 +27,13 @@ const expressServer = async ({ url }) => {
   const myTypeDefs = readFileSync(
     __dirname.concat('/../graphql/schema.graphql'),
   ).toString();
+
+  const apolloServerSentryPlugin = sentryStart({
+    release,
+    dsn: process.env.SENTRY_DSN,
+    env: process.env.APP_ENV,
+  });
+  const plugins = [apolloServerSentryPlugin];
 
   const apollo = new ApolloServer({
     typeDefs: [scalarTypeDefs, myTypeDefs],
@@ -40,8 +50,13 @@ const expressServer = async ({ url }) => {
       return {
         ...res.context,
         operation,
+        transaction: Sentry.startTransaction({
+          op: 'gql',
+          name: 'GraphQLTransaction', // this will be the default name, unless the gql query has a name
+        }),
       };
     },
+    plugins,
   });
   await apollo.start();
   apollo.applyMiddleware({ app, path: '/' });
@@ -56,7 +71,7 @@ const sartServer = async ({ url }) => {
     port = process.env.GRAPHQL_PORT_DEV;
   }
   proxy.listen(port, () => {
-    logger.info(`${pjson.name} - ${pjson.version}`);
+    logger.info(release);
     logger.info('🚀 Server ready at');
     logger.info(`http://${process.env.HOSTNAME}:${port}/`);
     if (process.env.NODE_ENV === 'test') {
