@@ -43,6 +43,9 @@
     "pino-pretty": "^10.2.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.7.1",
+    "@commitlint/config-angular": "^17.7.0",
+    "@commitlint/config-conventional": "^17.7.0",
     "eslint": "^7.32.0 || ^8.2.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.2",
@@ -62,7 +65,9 @@
     "prepare": "husky install",
     "test": "NODE_ENV=test jest",
     "integration": "NODE_ENV=test jest __tests__/integration",
-    "start:stack": "docker build -t mongodb ./docker/ && docker-compose --env-file .env -f ./docker/docker-compose.yml up -d"
+    "start:stack": "docker build -t mongodb ./docker/ && docker-compose --env-file .env -f ./docker/docker-compose.yml up -d",
+    "lint": "eslint --ignore-path .gitignore . --ext .js,.ts",
+    "lint:fix": "npm run lint -- --fix"
   },
   "coverageThreshold": {
     "global": {
