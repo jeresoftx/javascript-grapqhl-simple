@@ -1,16 +1,12 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const Sentry = require('@sentry/node');
-const Tracing = require('@sentry/tracing');
 
 const sentryStart = ({ env, dsn, release }) => {
   Sentry.init({
     environment: env,
     release,
     dsn,
-    integrations: [
-      new Sentry.Integrations.Http({ tracing: true }),
-      new Tracing.Integrations.Mongo(),
-    ],
+    integrations: [new Sentry.Integrations.Http({ tracing: true })],
     beforeSend(event) {
       return event;
     },

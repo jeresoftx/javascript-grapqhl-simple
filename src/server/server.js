@@ -17,7 +17,7 @@ const pjson = require('../../package.json');
 const { sentryStart } = require('./sentry');
 
 config();
-const release = `${pjson.name} - ${pjson.version}` || 'graphql v0.0.1';
+const release = `${pjson.name} - ${pjson.version}`;
 
 const expressServer = async ({ url }) => {
   await connectDB({ url });
