@@ -1,5 +1,5 @@
 const { config } = require('dotenv');
-const { sartServer, stopServer } = require('../../../src/server/server');
+const { startServer, stopServer } = require('../../../src/server/server');
 const { disconnectDB } = require('../../../src/db/connectDB');
 
 config();
@@ -7,7 +7,7 @@ config();
 describe('DB connection test', () => {
   it('Should server run', async () => {
     await disconnectDB();
-    const server = await sartServer({ url: null });
+    const server = await startServer({ url: null });
     await expect(server).toBeDefined();
     await stopServer(server);
   });

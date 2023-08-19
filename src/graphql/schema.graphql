@@ -40,7 +40,7 @@ type Permission {
 }
 
 "Permission object"
-type PermissionEmbeded {
+type PermissionEmbedded {
   id: ID!
   permission: String!
 }
@@ -50,7 +50,7 @@ type Role {
   id: ID!
   name: String!
   description: String
-  permissions: [PermissionEmbeded!]
+  permissions: [PermissionEmbedded!]
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -78,7 +78,7 @@ input PermissionInput {
 }
 
 type Query {
-  "retrun the version of the graphql system"
+  "return the version of the graphql system"
   version: String!
 
   "User lists"

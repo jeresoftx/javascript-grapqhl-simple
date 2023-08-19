@@ -1,9 +1,9 @@
 const { config } = require('dotenv');
 
-const { sartServer } = require('./server/server');
+const { startServer } = require('./server/server');
 
 config();
 
-sartServer({
+startServer({
   url: `${process.env.DB_HOST}/${process.env.DB_NAME}`,
 });

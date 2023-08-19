@@ -1,0 +1,15 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": ["JWTSECRET", "linebreak", "pino"],
+  "flagWords": ["hte"],
+  "languageSettings": [
+    {
+      "languageId": "javascript",
+      "locale": "*",
+      "ignoreRegExpList": ["/#include.*/"],
+      "dictionaries": ["javascript"],
+      "dictionaryDefinitions": []
+    }
+  ]
+}

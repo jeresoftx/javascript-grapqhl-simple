@@ -21,15 +21,8 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
-    'no-console': 'off',
-    'import/no-extraneous-dependencies': [
-      'error',
-      {
-        devDependencies: false,
-        optionalDependencies: false,
-        peerDependencies: false,
-      },
-    ],
+    'prettier/prettier': 'error',
+    'operator-linebreak': ['error', 'before'],
   },
   plugins: ['prettier'],
 };

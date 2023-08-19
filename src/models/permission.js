@@ -20,7 +20,7 @@ const schema = new Schema(
     },
   },
   { timestamps: true },
-  { collection: 'permisions' },
+  { collection: 'permissions' },
 );
 
 module.exports = mongoose.model('Permission', schema);
