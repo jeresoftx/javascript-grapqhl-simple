@@ -1,6 +1,7 @@
 # javascript-grapqhl-simple
 
 [![ MIT license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jeresoftx/javascript-grapqhl-simple/blob/main/LICENSE)
+[![codecov](https://codecov.io/gh/jeresoftx/typescript-design-patterns/graph/badge.svg?token=4WYKU54DGO)](https://codecov.io/gh/jeresoftx/typescript-design-patterns)
 
 This README provides a guide for setting up and running the project.
 
