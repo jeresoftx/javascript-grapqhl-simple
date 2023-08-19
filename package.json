@@ -59,6 +59,7 @@
     "mockingoose": "^2.16.2",
     "mongodb-memory-server": "^8.13.0",
     "nodemon": "^3.0.1",
+    "npm-run-all": "^4.1.5",
     "prettier": "^3.0.0",
     "supertest": "^6.3.3"
   },
@@ -68,8 +69,7 @@
     "test": "NODE_ENV=test jest",
     "integration": "NODE_ENV=test jest __tests__/integration",
     "start:stack": "docker build -t mongodb ./docker/ && docker-compose --env-file .env -f ./docker/docker-compose.yml up -d",
-    "lint": "eslint --ignore-path .gitignore . --ext .js,.ts",
-    "lint:fix": "npm run lint -- --fix"
+    "lint": "eslint ."
   },
   "coverageThreshold": {
     "global": {

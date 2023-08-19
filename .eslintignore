@@ -1,3 +1,5 @@
 node_modules
 .github
 docs
+src/server/sentry.js
+.github/workflows

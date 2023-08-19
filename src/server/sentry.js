@@ -45,13 +45,14 @@ const sentryStart = ({ env, dsn, release }) => {
         },
         didEncounterErrors(rc) {
           Sentry.withScope((scope) => {
-            scope.addEventProcessor((event) => Sentry.Handlers.parseRequest(event, rc.request));
+            scope.addEventProcessor((event) =>
+              Sentry.Handlers.parseRequest(event, rc.request),
+            );
 
             const id = rc.context.userId;
             if (id) {
               scope.setUser({
                 id,
-                // ip_address: rc.context.req.ip,
               });
             }
             scope.setExtra('query', rc.request.query);
@@ -60,16 +61,15 @@ const sentryStart = ({ env, dsn, release }) => {
             scope.setTags({
               graphqlName: rc.context.operation,
               userAgent: rc.context.userAgent,
-              coremeter: rc.context.coreMeter,
             });
 
             rc.errors.forEach((error) => {
               const errorType = error.message.split('|')[0];
 
               if (
-                errorType !== 'WARNING'
-                && error.path
-                && !error.stack.includes('Handleerror')
+                errorType !== 'WARNING' &&
+                error.path &&
+                !error.stack.includes('HandleError')
               ) {
                 scope.setExtras({
                   path: error.path,

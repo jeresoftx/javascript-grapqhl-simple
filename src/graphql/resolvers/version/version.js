@@ -1,7 +1,7 @@
-const pjson = require('../../../../package.json');
+const packageJson = require('../../../../package.json');
 
 const versionQ = async () => {
-  const { name, description, version } = pjson;
+  const { name, description, version } = packageJson;
 
   return `${name} - ${version} ${description}`;
 };

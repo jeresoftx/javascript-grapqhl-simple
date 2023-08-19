@@ -13,11 +13,11 @@ const resolvers = require('../graphql/resolvers/resolvers');
 const { authorization } = require('../middleware/auth');
 const { connectDB, disconnectDB } = require('../db/connectDB');
 const { logger } = require('../utils/logger');
-const pjson = require('../../package.json');
+const packageJson = require('../../package.json');
 const { sentryStart } = require('./sentry');
 
 config();
-const release = `${pjson.name} - ${pjson.version}`;
+const release = `${packageJson.name} - ${packageJson.version}`;
 
 const expressServer = async ({ url }) => {
   await connectDB({ url });
@@ -63,7 +63,7 @@ const expressServer = async ({ url }) => {
   return app;
 };
 
-const sartServer = async ({ url }) => {
+const startServer = async ({ url }) => {
   const app = await expressServer({ url });
   const proxy = http.createServer(app);
   let port = process.env.GRAPHQL_PORT;
@@ -92,6 +92,6 @@ const stopServer = async () => {
 module.exports = {
   expressServer,
   closeExpressServer,
-  sartServer,
+  startServer,
   stopServer,
 };

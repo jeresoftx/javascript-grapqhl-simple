@@ -63,7 +63,7 @@ const auth = async (req, res, next) => {
       active: true,
     },
     {
-      lastconnected: new Date(),
+      lastConnected: new Date(),
     },
   ).exec();
 

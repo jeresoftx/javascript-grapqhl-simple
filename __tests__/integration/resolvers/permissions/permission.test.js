@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 const request = require('supertest');
 
 const Permission = require('../../../../src/models/permission');
