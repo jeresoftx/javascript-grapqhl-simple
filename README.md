@@ -1,7 +1,6 @@
 # javascript-grapqhl-simple
 
-[![ MIT license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jeresoftx/javascript-grapqhl-simple/blob/main/LICENSE)
-[![codecov](https://codecov.io/gh/jeresoftx/typescript-design-patterns/graph/badge.svg?token=4WYKU54DGO)](https://codecov.io/gh/jeresoftx/typescript-design-patterns)
+[![ MIT license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jeresoftx/javascript-grapqhl-simple/blob/main/LICENSE) [![codecov](https://codecov.io/gh/jeresoftx/typescript-design-patterns/graph/badge.svg?token=4WYKU54DGO)](https://codecov.io/gh/jeresoftx/typescript-design-patterns)
 
 This README provides a guide for setting up and running the project.
 
@@ -74,6 +73,9 @@ You have successfully set up and started the application. If you encounter any i
 
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
 
+## QA
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=jeresoftx_javascript-grapqhl-simple&metric=bugs)](https://sonarcloud.io/dashboard?id=jeresoftx_javascript-grapqhl-simple) [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=jeresoftx_javascript-grapqhl-simple&metric=code_smells)](https://sonarcloud.io/dashboard?id=jeresoftx_javascript-grapqhl-simple) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=jeresoftx_javascript-grapqhl-simple&metric=coverage)](https://sonarcloud.io/dashboard?id=jeresoftx_javascript-grapqhl-simple) [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=jeresoftx_javascript-grapqhl-simple&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=jeresoftx_javascript-grapqhl-simple) [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=jeresoftx_javascript-grapqhl-simple&metric=ncloc)](https://sonarcloud.io/dashboard?id=jeresoftx_javascript-grapqhl-simple) [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=jeresoftx_javascript-grapqhl-simple&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=jeresoftx_javascript-grapqhl-simple) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=jeresoftx_javascript-grapqhl-simple&metric=alert_status)](https://sonarcloud.io/dashboard?id=jeresoftx_javascript-grapqhl-simple) [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=jeresoftx_javascript-grapqhl-simple&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=jeresoftx_javascript-grapqhl-simple) [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=jeresoftx_javascript-grapqhl-simple&metric=security_rating)](https://sonarcloud.io/dashboard?id=jeresoftx_javascript-grapqhl-simple) [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=jeresoftx_javascript-grapqhl-simple&metric=sqale_index)](https://sonarcloud.io/dashboard?id=jeresoftx_javascript-grapqhl-simple) [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=jeresoftx_javascript-grapqhl-simple&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=jeresoftx_javascript-grapqhl-simple)
+
 ## OTHERS
 
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier) [![Coventional commits: commitlint](https://img.shields.io/badge/Coventional_commits-commitlint-ff69b4.svg?style=flat-square)](https://www.conventionalcommits.org/) [![jest tested](https://img.shields.io/badge/Jest-tested-eee.svg?logo=jest&labelColor=99424f)](https://github.com/jestjs/jest)

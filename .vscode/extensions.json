@@ -5,13 +5,17 @@
   // List of extensions which should be recommended for users of this workspace.
   "recommendations": [
     "dbaeumer.vscode-eslint",
+    "visualstudioexptteam.vscodeintellicode",
     "esbenp.prettier-vscode",
     "ms-azuretools.vscode-docker",
     "eamodio.gitlens",
     "mikestead.dotenv",
     "orta.vscode-jest",
     "andys8.jest-snippets",
-    "apollographql.vscode-apollo"
+    "apollographql.vscode-apollo",
+    "vivaxy.vscode-conventional-commits",
+    "SonarSource.sonarlint-vscode",
+    "github.vscode-github-actions"
   ],
   // List of extensions recommended by VS Code that should not be recommended for users of this workspace.
   "unwantedRecommendations": []
