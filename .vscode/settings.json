@@ -3,5 +3,6 @@
   "sonarlint.connectedMode.project": {
     "connectionId": "jeresoftx",
     "projectKey": "jeresoftx_javascript-grapqhl-simple"
-  }
+  },
+  "conventionalCommits.scopes": ["Readme"]
 }
