@@ -26,16 +26,13 @@ const auth = async (req, res, next) => {
   if (!token) {
     return next();
   }
-
   const tokenData = await Token.findOne({
     token,
     active: true,
   }).exec();
-
   if (!tokenData) {
     return next();
   }
-
   let decodedToken;
   try {
     decodedToken = jwt.verify(token, process.env.JWTSECRET);
@@ -50,17 +47,13 @@ const auth = async (req, res, next) => {
     tokenData.save();
     return next();
   }
-
   const user = await User.findOne({
     _id: decodedToken.userId,
-    active: true,
   }).exec();
   context.roles = user.roles;
-
   await User.updateOne(
     {
       _id: decodedToken.userId,
-      active: true,
     },
     {
       lastConnected: new Date(),

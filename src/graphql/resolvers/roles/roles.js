@@ -2,7 +2,7 @@ const { isAuthorized } = require('../../../middleware/isAuthorized');
 const Role = require('../../../models/role');
 
 const roles = async (parent, { params }, context) => {
-  isAuthorized(context);
+  await isAuthorized(context);
   const {
     offset = 0,
     limit = 10,

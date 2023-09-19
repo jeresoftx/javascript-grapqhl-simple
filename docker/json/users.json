@@ -24,7 +24,7 @@
       }
     ],
     "roles": ["superAdmin"],
-    "password": "$2b$10$f7GQtaQODx0WoTExJBoqU.ah0EndSCGT8Myef28xRG1c4lPCbtRuW",
+    "password": "$2b$10$iJ4FsDVYNzTsFTN2ft2gMeA77ur4dk/mOoc8C615G46IyD2cwC7yO",
     "createdAt": {
       "$date": "2023-07-29T00:00:13.000Z"
     },

@@ -2,7 +2,7 @@ const { isAuthorized } = require('../../../middleware/isAuthorized');
 const User = require('../../../models/user');
 
 const addUser = async (parent, data, context) => {
-  isAuthorized(context);
+  await isAuthorized(context);
   const userData = {
     ...data,
     fullName: `${data.name} ${data.lastName}`,
@@ -11,6 +11,7 @@ const addUser = async (parent, data, context) => {
   };
   const user = new User(userData);
   await user.save();
+
   return user;
 };
 

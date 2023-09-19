@@ -11,12 +11,11 @@ const login = async (parent, data, context) => {
   const { username, password, remember } = data;
   const user = await User.findOne({
     $or: [{ username }, { email: username }],
-    active: true,
   }).exec();
+
   if (!user) {
     throw new Error('INFO | Login error!');
   }
-
   const isEqual = await bcrypt.compare(password, user.password);
   if (!isEqual) {
     throw new Error('INFO | Login error!');

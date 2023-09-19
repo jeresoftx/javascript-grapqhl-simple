@@ -59,6 +59,8 @@ jobs:
           echo USER_PASSWORD_TEST=$USER_PASSWORD_TEST >> .env
           echo USER_PASSWORD_DUMMY_TEST=$USER_PASSWORD_DUMMY_TEST >> .env
           echo USER_PASSWORD_ENCRYPTED_TEST=$USER_PASSWORD_ENCRYPTED_TEST >> .env
+          echo TOKEN_JWT=$TOKEN_JWT >> .env
+
         env:
           GRAPHQL_PORT: ${{ vars.GRAPHQL_PORT }}
           GRAPHQL_PORT_DEV: ${{ vars.GRAPHQL_PORT_DEV }}
@@ -71,6 +73,7 @@ jobs:
           USER_PASSWORD_TEST: ${{ secrets.USER_PASSWORD_TEST }}
           USER_PASSWORD_DUMMY_TEST: ${{ secrets.USER_PASSWORD_DUMMY_TEST }}
           USER_PASSWORD_ENCRYPTED_TEST: ${{ secrets.USER_PASSWORD_ENCRYPTED_TEST }}
+          TOKEN_JWT: ${{ secrets.TOKEN_JWT }}
       - name: Run linters
         uses: wearerequired/lint-action@v2
         with:

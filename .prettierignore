@@ -5,3 +5,5 @@ package-lock.json
 /coverage
 docs
 *.md
+.vscode
+docker

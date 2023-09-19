@@ -25,12 +25,9 @@ describe('Me unit test', () => {
     await Token.insertMany(tokensData);
     const response = await request(app)
       .post('/')
-      .set('content-type', 'application/json')
+      .set('Content-Type', 'application/json')
       .set('user-agent', 'jest')
-      .set(
-        'Authorization',
-        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDY2YmMwYWExY2EyZTZkY2EwNTk3Y2IiLCJ1c2VybmFtZSI6ImplcmVzb2Z0IiwiaWF0IjoxNjkxNzI0NzA0LCJleHAiOjE2OTQzMTY3MDR9.ThnuPMCitWz0eUhowl4VinQrI8p4dmXfxCpSz77Cvok',
-      )
+      .set('Authorization', `Bearer ${process.env.TOKEN_JWT}`)
       .send({
         query: queryMe,
       });

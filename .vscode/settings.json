@@ -4,5 +4,8 @@
     "connectionId": "jeresoftx",
     "projectKey": "jeresoftx_javascript-grapqhl-simple"
   },
-  "conventionalCommits.scopes": ["Readme"]
+  "conventionalCommits.scopes": [
+    "Readme",
+    "Authorization"
+  ]
 }
