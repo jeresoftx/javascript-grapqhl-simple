@@ -27,10 +27,7 @@ describe('Me unit test', () => {
       .post('/')
       .set('Content-Type', 'application/json')
       .set('user-agent', 'jest')
-      .set(
-        'Authorization',
-        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDY2YmMwYWExY2EyZTZkY2EwNTk3Y2IiLCJ1c2VybmFtZSI6ImplcmVzb2Z0IiwiaWF0IjoxNjk1MTA0Mjc0LCJleHAiOjE2OTUxOTA2NzR9.ipXRtxxGKrUZPc0O8IgLjSoAJJrLpRfuY01ly6uESg4',
-      )
+      .set('Authorization', `Bearer ${process.env.TOKEN_JWT}`)
       .send({
         query: queryMe,
       });
