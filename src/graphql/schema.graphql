@@ -15,7 +15,7 @@ type User {
   phones: [Phone!]!
   lastConnected: DateTime
   createdAt: DateTime!
-  updateAt: DateTime!
+  updatedAt: DateTime!
 }
 
 "Email object. The main email is the one with the variable main equal to true"
