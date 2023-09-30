@@ -41,7 +41,7 @@
     "jsonwebtoken": "^9.0.1",
     "mongoose": "^7.5.0",
     "path": "^0.12.7",
-    "pino": "^8.14.2",
+    "pino": "^8.15.1",
     "pino-pretty": "^10.2.0"
   },
   "devDependencies": {
