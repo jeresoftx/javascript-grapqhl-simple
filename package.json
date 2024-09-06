@@ -39,7 +39,7 @@
     "graphql-scalars": "^1.22.2",
     "helmet": "^7.0.0",
     "jsonwebtoken": "^9.0.1",
-    "mongoose": "^7.5.0",
+    "mongoose": "^8.0.0",
     "path": "^0.12.7",
     "pino": "^8.14.2",
     "pino-pretty": "^10.2.0"
