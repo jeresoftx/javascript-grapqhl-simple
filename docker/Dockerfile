@@ -1,4 +1,4 @@
-FROM mongo:6.0.9-rc0
+FROM mongo:6.0.18-rc0
 
 COPY docker-entrypoint.sh /usr/local/bin/
 COPY ./json /json
