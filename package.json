@@ -28,7 +28,7 @@
     "@sentry/tracing": "^7.11.1",
     "apollo-server": "^3.12.0",
     "apollo-server-express": "^3.12.0",
-    "bcrypt": "^5.1.1",
+    "bcrypt": "^6.0.0",
     "crypto-random-string": "^5.0.0",
     "dayjs": "^1.11.9",
     "dotenv": "^16.3.1",
@@ -42,7 +42,7 @@
     "mongoose": "^7.5.0",
     "path": "^0.12.7",
     "pino": "^8.14.2",
-    "pino-pretty": "^10.2.0"
+    "pino-pretty": "^10.3.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.7.1",
